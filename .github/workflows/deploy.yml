@@ -1,0 +1,41 @@
+name: Deploy Book A Doctor Frontend to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Client Dependencies
+        run: |
+          cd client
+          npm install
+
+      - name: Build Vite Client
+        run: |
+          cd client
+          npm run build
+        env:
+          VITE_BASE_PATH: /Repository-name-book-a-doctor/
+          VITE_API_URL: http://localhost:5000/api
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: client/dist
+          branch: gh-pages

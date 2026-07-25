@@ -1,0 +1,14 @@
+{
+  "name": "book-a-doctor-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:client": "npm run build --prefix client",
+    "deploy:client": "npm run deploy --prefix client",
+    "start:server": "npm start --prefix server",
+    "dev:server": "npm run dev --prefix server"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

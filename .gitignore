@@ -1,0 +1,19 @@
+# Dependencies
+node_modules
+client/node_modules
+server/node_modules
+
+# Build output
+client/dist
+dist
+
+# Environment variables & local files
+.env
+.env.local
+*.log
+.DS_Store
+
+# SQLite database files (local development)
+server/database/*.db
+server/database/*.db-wal
+server/database/*.db-shm
