@@ -2,7 +2,7 @@ services:
   - type: web
     name: book-a-doctor-backend
     env: node
-    buildCommand: cd server && npm install
+    buildCommand: cd server && npm install && npm rebuild better-sqlite3
     startCommand: cd server && node server.js
     envVars:
       - key: PORT
