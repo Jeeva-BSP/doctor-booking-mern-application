@@ -8,8 +8,9 @@ import reviewRoutes from './routes/reviewRoutes.js';
 import favoriteRoutes from './routes/favoriteRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
+import { connectMongo } from './config/dbMongo.js';
+import { seedMongoDatabase } from './database/seedMongo.js';
 import { seedDatabase } from './database/seed.js';
-
 import { exportDatabase } from './controllers/adminController.js';
 
 dotenv.config();
@@ -20,6 +21,11 @@ const PORT = process.env.PORT || 5000;
 // Enable CORS & JSON parsing
 app.use(cors({ origin: '*' }));
 app.use(express.json());
+
+// Auto-connect MongoDB and Seed MERN Database
+connectMongo().then(() => {
+  seedMongoDatabase();
+}).catch(console.error);
 
 // Auto-seed SQL database if empty
 seedDatabase();
