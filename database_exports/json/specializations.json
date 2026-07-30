@@ -1,0 +1,50 @@
+[
+  {
+    "specialization_id": 9,
+    "specialization_name": "Cardiology",
+    "description": "Heart and cardiovascular system care",
+    "icon": "Heart"
+  },
+  {
+    "specialization_id": 10,
+    "specialization_name": "Dermatology",
+    "description": "Skin, hair, and nail health care",
+    "icon": "Sparkles"
+  },
+  {
+    "specialization_id": 11,
+    "specialization_name": "Neurology",
+    "description": "Brain, spinal cord, and nervous system care",
+    "icon": "Activity"
+  },
+  {
+    "specialization_id": 12,
+    "specialization_name": "Pediatrics",
+    "description": "Infant, child, and adolescent medicine",
+    "icon": "Baby"
+  },
+  {
+    "specialization_id": 13,
+    "specialization_name": "Orthopedics",
+    "description": "Bones, joints, ligaments, and muscle care",
+    "icon": "Bone"
+  },
+  {
+    "specialization_id": 14,
+    "specialization_name": "General Medicine",
+    "description": "Comprehensive adult health and diagnosis",
+    "icon": "Stethoscope"
+  },
+  {
+    "specialization_id": 15,
+    "specialization_name": "Psychiatry",
+    "description": "Mental health diagnosis and treatment",
+    "icon": "Brain"
+  },
+  {
+    "specialization_id": 16,
+    "specialization_name": "Gynecology",
+    "description": "Women's reproductive health care",
+    "icon": "UserCheck"
+  }
+]

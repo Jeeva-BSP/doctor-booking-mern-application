@@ -1,0 +1,4370 @@
+[
+  {
+    "availability_id": 547,
+    "doctor_id": 98,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 548,
+    "doctor_id": 98,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 549,
+    "doctor_id": 98,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 550,
+    "doctor_id": 98,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 551,
+    "doctor_id": 98,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 552,
+    "doctor_id": 98,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 553,
+    "doctor_id": 99,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 554,
+    "doctor_id": 99,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 555,
+    "doctor_id": 99,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 556,
+    "doctor_id": 99,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 557,
+    "doctor_id": 99,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 558,
+    "doctor_id": 99,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 559,
+    "doctor_id": 100,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 560,
+    "doctor_id": 100,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 561,
+    "doctor_id": 100,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 562,
+    "doctor_id": 100,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 563,
+    "doctor_id": 100,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 564,
+    "doctor_id": 100,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 565,
+    "doctor_id": 101,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 566,
+    "doctor_id": 101,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 567,
+    "doctor_id": 101,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 568,
+    "doctor_id": 101,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 569,
+    "doctor_id": 101,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 570,
+    "doctor_id": 101,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 571,
+    "doctor_id": 102,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 572,
+    "doctor_id": 102,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 573,
+    "doctor_id": 102,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 574,
+    "doctor_id": 102,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 575,
+    "doctor_id": 102,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 576,
+    "doctor_id": 102,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 577,
+    "doctor_id": 103,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 578,
+    "doctor_id": 103,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 579,
+    "doctor_id": 103,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 580,
+    "doctor_id": 103,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 581,
+    "doctor_id": 103,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 582,
+    "doctor_id": 103,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 583,
+    "doctor_id": 104,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 584,
+    "doctor_id": 104,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 585,
+    "doctor_id": 104,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 586,
+    "doctor_id": 104,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 587,
+    "doctor_id": 104,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 588,
+    "doctor_id": 104,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 589,
+    "doctor_id": 105,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 590,
+    "doctor_id": 105,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 591,
+    "doctor_id": 105,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 592,
+    "doctor_id": 105,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 593,
+    "doctor_id": 105,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 594,
+    "doctor_id": 105,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 595,
+    "doctor_id": 106,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 596,
+    "doctor_id": 106,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 597,
+    "doctor_id": 106,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 598,
+    "doctor_id": 106,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 599,
+    "doctor_id": 106,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 600,
+    "doctor_id": 106,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 601,
+    "doctor_id": 107,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 602,
+    "doctor_id": 107,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 603,
+    "doctor_id": 107,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 604,
+    "doctor_id": 107,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 605,
+    "doctor_id": 107,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 606,
+    "doctor_id": 107,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 607,
+    "doctor_id": 108,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 608,
+    "doctor_id": 108,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 609,
+    "doctor_id": 108,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 610,
+    "doctor_id": 108,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 611,
+    "doctor_id": 108,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 612,
+    "doctor_id": 108,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 613,
+    "doctor_id": 109,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 614,
+    "doctor_id": 109,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 615,
+    "doctor_id": 109,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 616,
+    "doctor_id": 109,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 617,
+    "doctor_id": 109,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 618,
+    "doctor_id": 109,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 619,
+    "doctor_id": 110,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 620,
+    "doctor_id": 110,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 621,
+    "doctor_id": 110,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 622,
+    "doctor_id": 110,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 623,
+    "doctor_id": 110,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 624,
+    "doctor_id": 110,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 625,
+    "doctor_id": 111,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 626,
+    "doctor_id": 111,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 627,
+    "doctor_id": 111,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 628,
+    "doctor_id": 111,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 629,
+    "doctor_id": 111,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 630,
+    "doctor_id": 111,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 631,
+    "doctor_id": 112,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 632,
+    "doctor_id": 112,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 633,
+    "doctor_id": 112,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 634,
+    "doctor_id": 112,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 635,
+    "doctor_id": 112,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 636,
+    "doctor_id": 112,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 637,
+    "doctor_id": 113,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 638,
+    "doctor_id": 113,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 639,
+    "doctor_id": 113,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 640,
+    "doctor_id": 113,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 641,
+    "doctor_id": 113,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 642,
+    "doctor_id": 113,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 643,
+    "doctor_id": 114,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 644,
+    "doctor_id": 114,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 645,
+    "doctor_id": 114,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 646,
+    "doctor_id": 114,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 647,
+    "doctor_id": 114,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 648,
+    "doctor_id": 114,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 649,
+    "doctor_id": 115,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 650,
+    "doctor_id": 115,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 651,
+    "doctor_id": 115,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 652,
+    "doctor_id": 115,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 653,
+    "doctor_id": 115,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 654,
+    "doctor_id": 115,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 655,
+    "doctor_id": 116,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 656,
+    "doctor_id": 116,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 657,
+    "doctor_id": 116,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 658,
+    "doctor_id": 116,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 659,
+    "doctor_id": 116,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 660,
+    "doctor_id": 116,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 661,
+    "doctor_id": 117,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 662,
+    "doctor_id": 117,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 663,
+    "doctor_id": 117,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 664,
+    "doctor_id": 117,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 665,
+    "doctor_id": 117,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 666,
+    "doctor_id": 117,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 667,
+    "doctor_id": 118,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 668,
+    "doctor_id": 118,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 669,
+    "doctor_id": 118,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 670,
+    "doctor_id": 118,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 671,
+    "doctor_id": 118,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 672,
+    "doctor_id": 118,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 673,
+    "doctor_id": 119,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 674,
+    "doctor_id": 119,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 675,
+    "doctor_id": 119,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 676,
+    "doctor_id": 119,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 677,
+    "doctor_id": 119,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 678,
+    "doctor_id": 119,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 679,
+    "doctor_id": 120,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 680,
+    "doctor_id": 120,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 681,
+    "doctor_id": 120,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 682,
+    "doctor_id": 120,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 683,
+    "doctor_id": 120,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 684,
+    "doctor_id": 120,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 685,
+    "doctor_id": 121,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 686,
+    "doctor_id": 121,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 687,
+    "doctor_id": 121,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 688,
+    "doctor_id": 121,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 689,
+    "doctor_id": 121,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 690,
+    "doctor_id": 121,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 691,
+    "doctor_id": 122,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 692,
+    "doctor_id": 122,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 693,
+    "doctor_id": 122,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 694,
+    "doctor_id": 122,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 695,
+    "doctor_id": 122,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 696,
+    "doctor_id": 122,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 697,
+    "doctor_id": 123,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 698,
+    "doctor_id": 123,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 699,
+    "doctor_id": 123,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 700,
+    "doctor_id": 123,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 701,
+    "doctor_id": 123,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 702,
+    "doctor_id": 123,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 703,
+    "doctor_id": 124,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 704,
+    "doctor_id": 124,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 705,
+    "doctor_id": 124,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 706,
+    "doctor_id": 124,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 707,
+    "doctor_id": 124,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 708,
+    "doctor_id": 124,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 709,
+    "doctor_id": 125,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 710,
+    "doctor_id": 125,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 711,
+    "doctor_id": 125,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 712,
+    "doctor_id": 125,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 713,
+    "doctor_id": 125,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 714,
+    "doctor_id": 125,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 715,
+    "doctor_id": 126,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 716,
+    "doctor_id": 126,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 717,
+    "doctor_id": 126,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 718,
+    "doctor_id": 126,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 719,
+    "doctor_id": 126,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 720,
+    "doctor_id": 126,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 721,
+    "doctor_id": 127,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 722,
+    "doctor_id": 127,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 723,
+    "doctor_id": 127,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 724,
+    "doctor_id": 127,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 725,
+    "doctor_id": 127,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 726,
+    "doctor_id": 127,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 727,
+    "doctor_id": 128,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 728,
+    "doctor_id": 128,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 729,
+    "doctor_id": 128,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 730,
+    "doctor_id": 128,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 731,
+    "doctor_id": 128,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 732,
+    "doctor_id": 128,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 733,
+    "doctor_id": 129,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 734,
+    "doctor_id": 129,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 735,
+    "doctor_id": 129,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 736,
+    "doctor_id": 129,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 737,
+    "doctor_id": 129,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 738,
+    "doctor_id": 129,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 739,
+    "doctor_id": 130,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 740,
+    "doctor_id": 130,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 741,
+    "doctor_id": 130,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 742,
+    "doctor_id": 130,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 743,
+    "doctor_id": 130,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 744,
+    "doctor_id": 130,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 745,
+    "doctor_id": 131,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 746,
+    "doctor_id": 131,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 747,
+    "doctor_id": 131,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 748,
+    "doctor_id": 131,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 749,
+    "doctor_id": 131,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 750,
+    "doctor_id": 131,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 751,
+    "doctor_id": 132,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 752,
+    "doctor_id": 132,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 753,
+    "doctor_id": 132,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 754,
+    "doctor_id": 132,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 755,
+    "doctor_id": 132,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 756,
+    "doctor_id": 132,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 757,
+    "doctor_id": 133,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 758,
+    "doctor_id": 133,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 759,
+    "doctor_id": 133,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 760,
+    "doctor_id": 133,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 761,
+    "doctor_id": 133,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 762,
+    "doctor_id": 133,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 763,
+    "doctor_id": 134,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 764,
+    "doctor_id": 134,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 765,
+    "doctor_id": 134,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 766,
+    "doctor_id": 134,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 767,
+    "doctor_id": 134,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 768,
+    "doctor_id": 134,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 769,
+    "doctor_id": 135,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 770,
+    "doctor_id": 135,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 771,
+    "doctor_id": 135,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 772,
+    "doctor_id": 135,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 773,
+    "doctor_id": 135,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 774,
+    "doctor_id": 135,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 775,
+    "doctor_id": 136,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 776,
+    "doctor_id": 136,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 777,
+    "doctor_id": 136,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 778,
+    "doctor_id": 136,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 779,
+    "doctor_id": 136,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 780,
+    "doctor_id": 136,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 781,
+    "doctor_id": 137,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 782,
+    "doctor_id": 137,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 783,
+    "doctor_id": 137,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 784,
+    "doctor_id": 137,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 785,
+    "doctor_id": 137,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 786,
+    "doctor_id": 137,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 787,
+    "doctor_id": 138,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 788,
+    "doctor_id": 138,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 789,
+    "doctor_id": 138,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 790,
+    "doctor_id": 138,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 791,
+    "doctor_id": 138,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 792,
+    "doctor_id": 138,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 793,
+    "doctor_id": 139,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 794,
+    "doctor_id": 139,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 795,
+    "doctor_id": 139,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 796,
+    "doctor_id": 139,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 797,
+    "doctor_id": 139,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 798,
+    "doctor_id": 139,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 799,
+    "doctor_id": 140,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 800,
+    "doctor_id": 140,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 801,
+    "doctor_id": 140,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 802,
+    "doctor_id": 140,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 803,
+    "doctor_id": 140,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 804,
+    "doctor_id": 140,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 805,
+    "doctor_id": 141,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 806,
+    "doctor_id": 141,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 807,
+    "doctor_id": 141,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 808,
+    "doctor_id": 141,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 809,
+    "doctor_id": 141,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 810,
+    "doctor_id": 141,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 811,
+    "doctor_id": 142,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 812,
+    "doctor_id": 142,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 813,
+    "doctor_id": 142,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 814,
+    "doctor_id": 142,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 815,
+    "doctor_id": 142,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 816,
+    "doctor_id": 142,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 817,
+    "doctor_id": 143,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 818,
+    "doctor_id": 143,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 819,
+    "doctor_id": 143,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 820,
+    "doctor_id": 143,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 821,
+    "doctor_id": 143,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 822,
+    "doctor_id": 143,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 823,
+    "doctor_id": 144,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 824,
+    "doctor_id": 144,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 825,
+    "doctor_id": 144,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 826,
+    "doctor_id": 144,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 827,
+    "doctor_id": 144,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 828,
+    "doctor_id": 144,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 829,
+    "doctor_id": 145,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 830,
+    "doctor_id": 145,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 831,
+    "doctor_id": 145,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 832,
+    "doctor_id": 145,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 833,
+    "doctor_id": 145,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 834,
+    "doctor_id": 145,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 835,
+    "doctor_id": 146,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 836,
+    "doctor_id": 146,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 837,
+    "doctor_id": 146,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 838,
+    "doctor_id": 146,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 839,
+    "doctor_id": 146,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 840,
+    "doctor_id": 146,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 841,
+    "doctor_id": 147,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 842,
+    "doctor_id": 147,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 843,
+    "doctor_id": 147,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 844,
+    "doctor_id": 147,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 845,
+    "doctor_id": 147,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 846,
+    "doctor_id": 147,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 847,
+    "doctor_id": 148,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 848,
+    "doctor_id": 148,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 849,
+    "doctor_id": 148,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 850,
+    "doctor_id": 148,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 851,
+    "doctor_id": 148,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 852,
+    "doctor_id": 148,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 853,
+    "doctor_id": 149,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 854,
+    "doctor_id": 149,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 855,
+    "doctor_id": 149,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 856,
+    "doctor_id": 149,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 857,
+    "doctor_id": 149,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 858,
+    "doctor_id": 149,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 859,
+    "doctor_id": 150,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 860,
+    "doctor_id": 150,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 861,
+    "doctor_id": 150,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 862,
+    "doctor_id": 150,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 863,
+    "doctor_id": 150,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 864,
+    "doctor_id": 150,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 865,
+    "doctor_id": 151,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 866,
+    "doctor_id": 151,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 867,
+    "doctor_id": 151,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 868,
+    "doctor_id": 151,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 869,
+    "doctor_id": 151,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 870,
+    "doctor_id": 151,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 871,
+    "doctor_id": 152,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 872,
+    "doctor_id": 152,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 873,
+    "doctor_id": 152,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 874,
+    "doctor_id": 152,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 875,
+    "doctor_id": 152,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 876,
+    "doctor_id": 152,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 877,
+    "doctor_id": 153,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 878,
+    "doctor_id": 153,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 879,
+    "doctor_id": 153,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 880,
+    "doctor_id": 153,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 881,
+    "doctor_id": 153,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 882,
+    "doctor_id": 153,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 883,
+    "doctor_id": 154,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 884,
+    "doctor_id": 154,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 885,
+    "doctor_id": 154,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 886,
+    "doctor_id": 154,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 887,
+    "doctor_id": 154,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 888,
+    "doctor_id": 154,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 889,
+    "doctor_id": 155,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 890,
+    "doctor_id": 155,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 891,
+    "doctor_id": 155,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 892,
+    "doctor_id": 155,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 893,
+    "doctor_id": 155,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 894,
+    "doctor_id": 155,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 895,
+    "doctor_id": 156,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 896,
+    "doctor_id": 156,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 897,
+    "doctor_id": 156,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 898,
+    "doctor_id": 156,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 899,
+    "doctor_id": 156,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 900,
+    "doctor_id": 156,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 901,
+    "doctor_id": 157,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 902,
+    "doctor_id": 157,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 903,
+    "doctor_id": 157,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 904,
+    "doctor_id": 157,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 905,
+    "doctor_id": 157,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 906,
+    "doctor_id": 157,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 907,
+    "doctor_id": 158,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 908,
+    "doctor_id": 158,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 909,
+    "doctor_id": 158,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 910,
+    "doctor_id": 158,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 911,
+    "doctor_id": 158,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 912,
+    "doctor_id": 158,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 913,
+    "doctor_id": 159,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 914,
+    "doctor_id": 159,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 915,
+    "doctor_id": 159,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 916,
+    "doctor_id": 159,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 917,
+    "doctor_id": 159,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 918,
+    "doctor_id": 159,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 919,
+    "doctor_id": 160,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 920,
+    "doctor_id": 160,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 921,
+    "doctor_id": 160,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 922,
+    "doctor_id": 160,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 923,
+    "doctor_id": 160,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 924,
+    "doctor_id": 160,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 925,
+    "doctor_id": 161,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 926,
+    "doctor_id": 161,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 927,
+    "doctor_id": 161,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 928,
+    "doctor_id": 161,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 929,
+    "doctor_id": 161,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 930,
+    "doctor_id": 161,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 931,
+    "doctor_id": 162,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 932,
+    "doctor_id": 162,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 933,
+    "doctor_id": 162,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 934,
+    "doctor_id": 162,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 935,
+    "doctor_id": 162,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 936,
+    "doctor_id": 162,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 937,
+    "doctor_id": 163,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 938,
+    "doctor_id": 163,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 939,
+    "doctor_id": 163,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 940,
+    "doctor_id": 163,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 941,
+    "doctor_id": 163,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 942,
+    "doctor_id": 163,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 943,
+    "doctor_id": 164,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 944,
+    "doctor_id": 164,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 945,
+    "doctor_id": 164,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 946,
+    "doctor_id": 164,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 947,
+    "doctor_id": 164,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 948,
+    "doctor_id": 164,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 949,
+    "doctor_id": 165,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 950,
+    "doctor_id": 165,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 951,
+    "doctor_id": 165,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 952,
+    "doctor_id": 165,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 953,
+    "doctor_id": 165,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 954,
+    "doctor_id": 165,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 955,
+    "doctor_id": 166,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 956,
+    "doctor_id": 166,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 957,
+    "doctor_id": 166,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 958,
+    "doctor_id": 166,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 959,
+    "doctor_id": 166,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 960,
+    "doctor_id": 166,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 961,
+    "doctor_id": 167,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 962,
+    "doctor_id": 167,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 963,
+    "doctor_id": 167,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 964,
+    "doctor_id": 167,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 965,
+    "doctor_id": 167,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 966,
+    "doctor_id": 167,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 967,
+    "doctor_id": 168,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 968,
+    "doctor_id": 168,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 969,
+    "doctor_id": 168,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 970,
+    "doctor_id": 168,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 971,
+    "doctor_id": 168,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 972,
+    "doctor_id": 168,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 973,
+    "doctor_id": 169,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 974,
+    "doctor_id": 169,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 975,
+    "doctor_id": 169,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 976,
+    "doctor_id": 169,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 977,
+    "doctor_id": 169,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 978,
+    "doctor_id": 169,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 979,
+    "doctor_id": 170,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 980,
+    "doctor_id": 170,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 981,
+    "doctor_id": 170,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 982,
+    "doctor_id": 170,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 983,
+    "doctor_id": 170,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 984,
+    "doctor_id": 170,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 985,
+    "doctor_id": 171,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 986,
+    "doctor_id": 171,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 987,
+    "doctor_id": 171,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 988,
+    "doctor_id": 171,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 989,
+    "doctor_id": 171,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 990,
+    "doctor_id": 171,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 991,
+    "doctor_id": 172,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 992,
+    "doctor_id": 172,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 993,
+    "doctor_id": 172,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 994,
+    "doctor_id": 172,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 995,
+    "doctor_id": 172,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 996,
+    "doctor_id": 172,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 997,
+    "doctor_id": 173,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 998,
+    "doctor_id": 173,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 999,
+    "doctor_id": 173,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1000,
+    "doctor_id": 173,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1001,
+    "doctor_id": 173,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1002,
+    "doctor_id": 173,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1003,
+    "doctor_id": 174,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1004,
+    "doctor_id": 174,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1005,
+    "doctor_id": 174,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1006,
+    "doctor_id": 174,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1007,
+    "doctor_id": 174,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1008,
+    "doctor_id": 174,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1009,
+    "doctor_id": 175,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1010,
+    "doctor_id": 175,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1011,
+    "doctor_id": 175,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1012,
+    "doctor_id": 175,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1013,
+    "doctor_id": 175,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1014,
+    "doctor_id": 175,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1015,
+    "doctor_id": 176,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1016,
+    "doctor_id": 176,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1017,
+    "doctor_id": 176,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1018,
+    "doctor_id": 176,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1019,
+    "doctor_id": 176,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1020,
+    "doctor_id": 176,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1021,
+    "doctor_id": 177,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1022,
+    "doctor_id": 177,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1023,
+    "doctor_id": 177,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1024,
+    "doctor_id": 177,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1025,
+    "doctor_id": 177,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1026,
+    "doctor_id": 177,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1027,
+    "doctor_id": 178,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1028,
+    "doctor_id": 178,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1029,
+    "doctor_id": 178,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1030,
+    "doctor_id": 178,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1031,
+    "doctor_id": 178,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1032,
+    "doctor_id": 178,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1033,
+    "doctor_id": 179,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1034,
+    "doctor_id": 179,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1035,
+    "doctor_id": 179,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1036,
+    "doctor_id": 179,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1037,
+    "doctor_id": 179,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1038,
+    "doctor_id": 179,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1039,
+    "doctor_id": 180,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1040,
+    "doctor_id": 180,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1041,
+    "doctor_id": 180,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1042,
+    "doctor_id": 180,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1043,
+    "doctor_id": 180,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1044,
+    "doctor_id": 180,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1045,
+    "doctor_id": 181,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1046,
+    "doctor_id": 181,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1047,
+    "doctor_id": 181,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1048,
+    "doctor_id": 181,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1049,
+    "doctor_id": 181,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1050,
+    "doctor_id": 181,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1051,
+    "doctor_id": 182,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1052,
+    "doctor_id": 182,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1053,
+    "doctor_id": 182,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1054,
+    "doctor_id": 182,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1055,
+    "doctor_id": 182,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1056,
+    "doctor_id": 182,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1057,
+    "doctor_id": 183,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1058,
+    "doctor_id": 183,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1059,
+    "doctor_id": 183,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1060,
+    "doctor_id": 183,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1061,
+    "doctor_id": 183,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1062,
+    "doctor_id": 183,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1063,
+    "doctor_id": 184,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1064,
+    "doctor_id": 184,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1065,
+    "doctor_id": 184,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1066,
+    "doctor_id": 184,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1067,
+    "doctor_id": 184,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1068,
+    "doctor_id": 184,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1069,
+    "doctor_id": 185,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1070,
+    "doctor_id": 185,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1071,
+    "doctor_id": 185,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1072,
+    "doctor_id": 185,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1073,
+    "doctor_id": 185,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1074,
+    "doctor_id": 185,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1075,
+    "doctor_id": 186,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1076,
+    "doctor_id": 186,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1077,
+    "doctor_id": 186,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1078,
+    "doctor_id": 186,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1079,
+    "doctor_id": 186,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1080,
+    "doctor_id": 186,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1081,
+    "doctor_id": 187,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1082,
+    "doctor_id": 187,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1083,
+    "doctor_id": 187,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1084,
+    "doctor_id": 187,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1085,
+    "doctor_id": 187,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1086,
+    "doctor_id": 187,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1087,
+    "doctor_id": 188,
+    "day": "Monday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1088,
+    "doctor_id": 188,
+    "day": "Tuesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1089,
+    "doctor_id": 188,
+    "day": "Wednesday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1090,
+    "doctor_id": 188,
+    "day": "Thursday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1091,
+    "doctor_id": 188,
+    "day": "Friday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  },
+  {
+    "availability_id": 1092,
+    "doctor_id": 188,
+    "day": "Saturday",
+    "start_time": "09:00",
+    "end_time": "17:00",
+    "appointment_duration": 30
+  }
+]

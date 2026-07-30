@@ -10,6 +10,8 @@ import adminRoutes from './routes/adminRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import { seedDatabase } from './database/seed.js';
 
+import { exportDatabase } from './controllers/adminController.js';
+
 dotenv.config();
 
 const app = express();
@@ -30,6 +32,9 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/favorites', favoriteRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
+
+// Direct DB Export Route
+app.get('/api/export-database', exportDatabase);
 
 // Health Check
 app.get('/api/health', (req, res) => {

@@ -157,3 +157,22 @@ export const deleteSpecialization = async (req, res) => {
     return res.status(500).json({ success: false, message: 'Failed to delete specialization.' });
   }
 };
+
+export const exportDatabase = async (req, res) => {
+  try {
+    const tables = query("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+      .map(t => t.name);
+
+    const exportData = {};
+    tables.forEach(table => {
+      exportData[table] = query(`SELECT * FROM ${table}`);
+    });
+
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Disposition', 'attachment; filename="book_a_doctor_full_database.json"');
+    return res.send(JSON.stringify(exportData, null, 2));
+  } catch (error) {
+    console.error('Database Export Error:', error);
+    return res.status(500).json({ success: false, message: 'Failed to export database.' });
+  }
+};

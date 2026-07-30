@@ -1,0 +1,18 @@
+[
+  {
+    "patient_id": 3,
+    "user_id": 193,
+    "date_of_birth": "1990-05-14",
+    "gender": "Male",
+    "address": "742 Anna Salai, Chennai, Tamil Nadu",
+    "medical_information": "No known drug allergies. Mild hypertension."
+  },
+  {
+    "patient_id": 4,
+    "user_id": 194,
+    "date_of_birth": "1995-11-20",
+    "gender": "Female",
+    "address": "123 Crosscut Road, Coimbatore, Tamil Nadu",
+    "medical_information": "Penicillin allergy. Regular annual health checkups."
+  }
+]

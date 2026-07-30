@@ -1,0 +1,3 @@
+patient_id,user_id,date_of_birth,gender,address,medical_information
+"3","193","1990-05-14","Male","742 Anna Salai, Chennai, Tamil Nadu","No known drug allergies. Mild hypertension."
+"4","194","1995-11-20","Female","123 Crosscut Road, Coimbatore, Tamil Nadu","Penicillin allergy. Regular annual health checkups."

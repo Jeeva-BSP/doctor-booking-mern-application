@@ -1,0 +1,4 @@
+appointment_id,patient_id,doctor_id,appointment_date,appointment_time,reason,status,created_at
+"4","3","98","2026-07-28","10:00","Routine heart checkup and blood pressure consultation","Confirmed","2026-07-25 03:59:14"
+"5","3","99","2026-07-15","14:00","Skin consultation regarding allergic rash","Completed","2026-07-25 03:59:14"
+"6","4","98","2026-07-30","11:30","Experiencing mild chest tightness","Pending","2026-07-25 03:59:14"
