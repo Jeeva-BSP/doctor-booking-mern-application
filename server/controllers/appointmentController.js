@@ -1,8 +1,11 @@
-import { query, queryOne, execute } from '../config/db.js';
+import Appointment from '../models/Appointment.js';
+import Doctor from '../models/Doctor.js';
+import User from '../models/User.js';
+import Patient from '../models/Patient.js';
+import DoctorAvailability from '../models/DoctorAvailability.js';
+import Notification from '../models/Notification.js';
+import Review from '../models/Review.js';
 
-/**
- * Generate 24h formatted time slots (e.g., "09:00", "09:30")
- */
 function generateTimeSlots(startTimeStr, endTimeStr, durationMinutes = 30) {
   const slots = [];
   const [startHour, startMin] = startTimeStr.split(':').map(Number);
@@ -29,16 +32,14 @@ export const getAvailableSlots = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Doctor ID and date are required.' });
     }
 
-    // Convert date string to day of week name (e.g., 'Monday')
     const dateObj = new Date(date + 'T00:00:00');
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayName = dayNames[dateObj.getDay()];
 
-    // Get doctor availability rule for that day
-    const availability = queryOne(
-      'SELECT * FROM doctor_availability WHERE doctor_id = ? AND day = ?',
-      [parseInt(doctorId), dayName]
-    );
+    const availability = await DoctorAvailability.findOne({
+      doctor: doctorId,
+      day: new RegExp(dayName, 'i')
+    });
 
     if (!availability) {
       return res.json({
@@ -50,19 +51,20 @@ export const getAvailableSlots = async (req, res) => {
       });
     }
 
-    // Generate total possible time slots
-    const allSlots = generateTimeSlots(availability.start_time, availability.end_time, availability.appointment_duration || 30);
-
-    // Fetch already booked slots for this doctor on this date (not cancelled or rejected)
-    const bookedAppointments = query(
-      `SELECT appointment_time FROM appointments 
-       WHERE doctor_id = ? AND appointment_date = ? AND status NOT IN ('Cancelled', 'Rejected')`,
-      [parseInt(doctorId), date]
+    const allSlots = generateTimeSlots(
+      availability.start_time || '09:00',
+      availability.end_time || '17:00',
+      availability.slot_duration_minutes || 30
     );
+
+    const bookedAppointments = await Appointment.find({
+      doctor: doctorId,
+      appointment_date: date,
+      status: { $nin: ['Cancelled', 'Rejected'] }
+    });
 
     const bookedTimes = new Set(bookedAppointments.map(a => a.appointment_time));
 
-    // Current date and time check to prevent booking past hours if date is today
     const now = new Date();
     const todayStr = now.toISOString().split('T')[0];
     const currentHHMM = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
@@ -100,37 +102,23 @@ export const createAppointment = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Doctor, date, and time are required.' });
     }
 
-    // Get patient record
-    const patient = queryOne('SELECT patient_id FROM patients WHERE user_id = ?', [user.user_id]);
-    if (!patient) {
-      return res.status(403).json({ success: false, message: 'Only registered patients can book appointments.' });
-    }
-
-    // 1. Prevent booking past dates
     const todayStr = new Date().toISOString().split('T')[0];
     if (appointment_date < todayStr) {
       return res.status(400).json({ success: false, message: 'Cannot book appointments for past dates.' });
     }
 
-    // 2. Check if doctor exists and is approved
-    const doctor = queryOne(
-      `SELECT d.doctor_id, d.user_id, u.name as doctor_name 
-       FROM doctors d 
-       JOIN users u ON d.user_id = u.user_id 
-       WHERE d.doctor_id = ? AND d.verification_status = 'approved'`,
-      [doctor_id]
-    );
-
-    if (!doctor) {
+    const doc = await Doctor.findById(doctor_id).populate('user', 'name');
+    if (!doc || doc.verification_status !== 'approved') {
       return res.status(404).json({ success: false, message: 'Selected doctor is not available or approved.' });
     }
 
-    // 3. Double-Booking Check: Doctor slot conflict
-    const existingDoctorSlot = queryOne(
-      `SELECT appointment_id FROM appointments 
-       WHERE doctor_id = ? AND appointment_date = ? AND appointment_time = ? AND status NOT IN ('Cancelled', 'Rejected')`,
-      [doctor_id, appointment_date, appointment_time]
-    );
+    // Doctor double-booking check
+    const existingDoctorSlot = await Appointment.findOne({
+      doctor: doctor_id,
+      appointment_date,
+      appointment_time,
+      status: { $nin: ['Cancelled', 'Rejected'] }
+    });
 
     if (existingDoctorSlot) {
       return res.status(400).json({
@@ -139,12 +127,13 @@ export const createAppointment = async (req, res) => {
       });
     }
 
-    // 4. Double-Booking Check: Patient double booking conflict
-    const existingPatientSlot = queryOne(
-      `SELECT appointment_id FROM appointments 
-       WHERE patient_id = ? AND appointment_date = ? AND appointment_time = ? AND status NOT IN ('Cancelled', 'Rejected')`,
-      [patient.patient_id, appointment_date, appointment_time]
-    );
+    // Patient double-booking check
+    const existingPatientSlot = await Appointment.findOne({
+      patient: user.user_id,
+      appointment_date,
+      appointment_time,
+      status: { $nin: ['Cancelled', 'Rejected'] }
+    });
 
     if (existingPatientSlot) {
       return res.status(400).json({
@@ -153,29 +142,35 @@ export const createAppointment = async (req, res) => {
       });
     }
 
-    // 5. Create Appointment in SQL
-    const apptRes = execute(
-      `INSERT INTO appointments (patient_id, doctor_id, appointment_date, appointment_time, reason, status)
-       VALUES (?, ?, ?, ?, ?, 'Pending')`,
-      [patient.patient_id, doctor_id, appointment_date, appointment_time, reason || 'General Consultation']
-    );
+    const appt = await Appointment.create({
+      patient: user.user_id,
+      doctor: doctor_id,
+      appointment_date,
+      appointment_time,
+      reason: reason || 'General Consultation',
+      status: 'Pending'
+    });
 
     // Notify Patient
-    execute(
-      'INSERT INTO notifications (user_id, title, message) VALUES (?, ?, ?)',
-      [user.user_id, 'Appointment Requested', `Your appointment request with ${doctor.doctor_name} for ${appointment_date} at ${appointment_time} is pending confirmation.`]
-    );
+    await Notification.create({
+      user: user.user_id,
+      title: 'Appointment Requested',
+      message: `Your appointment request with ${doc.user?.name || 'Doctor'} for ${appointment_date} at ${appointment_time} is pending confirmation.`
+    });
 
     // Notify Doctor
-    execute(
-      'INSERT INTO notifications (user_id, title, message) VALUES (?, ?, ?)',
-      [doctor.user_id, 'New Appointment Request', `Patient ${user.name} has requested an appointment on ${appointment_date} at ${appointment_time}.`]
-    );
+    if (doc.user?._id) {
+      await Notification.create({
+        user: doc.user._id,
+        title: 'New Appointment Request',
+        message: `Patient ${user.name} has requested an appointment on ${appointment_date} at ${appointment_time}.`
+      });
+    }
 
     return res.status(201).json({
       success: true,
       message: 'Appointment booked successfully!',
-      appointment_id: apptRes.lastInsertRowid
+      appointment_id: appt._id
     });
   } catch (error) {
     console.error('Error creating appointment:', error);
@@ -188,46 +183,71 @@ export const getAppointments = async (req, res) => {
     const user = req.user;
     const { status } = req.query;
 
-    let sql = `
-      SELECT 
-        a.appointment_id, a.appointment_date, a.appointment_time, a.reason, a.status, a.created_at,
-        p.patient_id, pu.name as patient_name, pu.email as patient_email, pu.phone as patient_phone, pu.profile_image as patient_image, p.gender, p.date_of_birth, p.medical_information,
-        d.doctor_id, du.name as doctor_name, du.email as doctor_email, du.phone as doctor_phone, du.profile_image as doctor_image,
-        d.hospital, d.location, d.consultation_fee, s.specialization_name,
-        r.review_id, r.rating, r.comment
-      FROM appointments a
-      JOIN patients p ON a.patient_id = p.patient_id
-      JOIN users pu ON p.user_id = pu.user_id
-      JOIN doctors d ON a.doctor_id = d.doctor_id
-      JOIN users du ON d.user_id = du.user_id
-      JOIN specializations s ON d.specialization_id = s.specialization_id
-      LEFT JOIN reviews r ON a.appointment_id = r.appointment_id
-      WHERE 1=1
-    `;
-
-    const params = [];
+    const filter = {};
 
     if (user.role === 'patient') {
-      sql += ` AND p.user_id = ?`;
-      params.push(user.user_id);
+      filter.patient = user.user_id;
     } else if (user.role === 'doctor') {
-      sql += ` AND d.user_id = ?`;
-      params.push(user.user_id);
-    } // Admin sees all appointments!
-
-    if (status && status !== 'all') {
-      sql += ` AND a.status = ?`;
-      params.push(status);
+      const doc = await Doctor.findOne({ user: user.user_id });
+      if (doc) filter.doctor = doc._id;
     }
 
-    sql += ` ORDER BY a.appointment_date DESC, a.appointment_time ASC`;
+    if (status && status !== 'all') {
+      filter.status = status;
+    }
 
-    const appointments = query(sql, params);
+    const appointments = await Appointment.find(filter)
+      .populate({
+        path: 'doctor',
+        populate: [
+          { path: 'user', select: 'name email phone profile_image' },
+          { path: 'specialization', select: 'specialization_name' }
+        ]
+      })
+      .populate('patient', 'name email phone profile_image gender date_of_birth medical_information')
+      .sort({ appointment_date: -1, appointment_time: 1 });
+
+    const formatted = await Promise.all(appointments.map(async a => {
+      const review = await Review.findOne({ appointment: a._id });
+      const patientDoc = await Patient.findOne({ user: a.patient?._id });
+
+      return {
+        appointment_id: a._id,
+        appointment_date: a.appointment_date,
+        appointment_time: a.appointment_time,
+        reason: a.reason,
+        status: a.status,
+        created_at: a.created_at,
+
+        patient_id: patientDoc?._id,
+        patient_name: a.patient?.name || 'Patient',
+        patient_email: a.patient?.email || '',
+        patient_phone: a.patient?.phone || '',
+        patient_image: a.patient?.profile_image || '',
+        gender: patientDoc?.gender || 'Other',
+        date_of_birth: patientDoc?.date_of_birth || '',
+        medical_information: patientDoc?.medical_information || '',
+
+        doctor_id: a.doctor?._id,
+        doctor_name: a.doctor?.user?.name || 'Doctor',
+        doctor_email: a.doctor?.user?.email || '',
+        doctor_phone: a.doctor?.user?.phone || '',
+        doctor_image: a.doctor?.user?.profile_image || '',
+        hospital: a.doctor?.hospital || '',
+        location: a.doctor?.location || '',
+        consultation_fee: a.doctor?.consultation_fee || 0,
+        specialization_name: a.doctor?.specialization?.specialization_name || 'General',
+
+        review_id: review?._id,
+        rating: review?.rating,
+        comment: review?.comment
+      };
+    }));
 
     return res.json({
       success: true,
-      count: appointments.length,
-      appointments
+      count: formatted.length,
+      appointments: formatted
     });
   } catch (error) {
     console.error('Error fetching appointments:', error);
@@ -238,45 +258,41 @@ export const getAppointments = async (req, res) => {
 export const updateAppointmentStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body; // 'Confirmed', 'Rejected', 'Completed', 'Cancelled'
+    const { status } = req.body;
 
     if (!['Pending', 'Confirmed', 'Rejected', 'Completed', 'Cancelled'].includes(status)) {
       return res.status(400).json({ success: false, message: 'Invalid status value.' });
     }
 
-    const appt = queryOne(
-      `SELECT a.*, pu.user_id as patient_user_id, du.name as doctor_name, pu.name as patient_name 
-       FROM appointments a
-       JOIN patients p ON a.patient_id = p.patient_id
-       JOIN users pu ON p.user_id = pu.user_id
-       JOIN doctors d ON a.doctor_id = d.doctor_id
-       JOIN users du ON d.user_id = du.user_id
-       WHERE a.appointment_id = ?`,
-      [id]
-    );
+    const appt = await Appointment.findById(id)
+      .populate({ path: 'doctor', populate: { path: 'user', select: 'name' } })
+      .populate('patient', 'name');
 
     if (!appt) {
       return res.status(404).json({ success: false, message: 'Appointment not found.' });
     }
 
-    execute('UPDATE appointments SET status = ? WHERE appointment_id = ?', [status, id]);
+    appt.status = status;
+    await appt.save();
 
-    // Send Notification to Patient
+    const doctorName = appt.doctor?.user?.name || 'Doctor';
+
     let title = `Appointment ${status}`;
-    let message = `Your appointment with ${appt.doctor_name} for ${appt.appointment_date} at ${appt.appointment_time} has been updated to: ${status}.`;
+    let message = `Your appointment with ${doctorName} for ${appt.appointment_date} at ${appt.appointment_time} has been updated to: ${status}.`;
 
     if (status === 'Confirmed') {
-      message = `Great news! ${appt.doctor_name} has confirmed your appointment on ${appt.appointment_date} at ${appt.appointment_time}.`;
+      message = `Great news! ${doctorName} has confirmed your appointment on ${appt.appointment_date} at ${appt.appointment_time}.`;
     } else if (status === 'Completed') {
-      message = `Your consultation with ${appt.doctor_name} is marked as completed. Please feel free to leave a review!`;
+      message = `Your consultation with ${doctorName} is marked as completed. Please feel free to leave a review!`;
     } else if (status === 'Rejected') {
-      message = `Unfortunately, ${appt.doctor_name} was unable to accept your appointment for ${appt.appointment_date}. Please choose another time slot.`;
+      message = `Unfortunately, ${doctorName} was unable to accept your appointment for ${appt.appointment_date}.`;
     }
 
-    execute(
-      'INSERT INTO notifications (user_id, title, message) VALUES (?, ?, ?)',
-      [appt.patient_user_id, title, message]
-    );
+    await Notification.create({
+      user: appt.patient._id,
+      title,
+      message
+    });
 
     return res.json({
       success: true,
@@ -297,26 +313,27 @@ export const rescheduleAppointment = async (req, res) => {
       return res.status(400).json({ success: false, message: 'New date and time are required.' });
     }
 
-    const appt = queryOne('SELECT * FROM appointments WHERE appointment_id = ?', [id]);
+    const appt = await Appointment.findById(id);
     if (!appt) {
       return res.status(404).json({ success: false, message: 'Appointment not found.' });
     }
 
-    // Double Booking Check
-    const conflict = queryOne(
-      `SELECT appointment_id FROM appointments 
-       WHERE doctor_id = ? AND appointment_date = ? AND appointment_time = ? AND appointment_id != ? AND status NOT IN ('Cancelled', 'Rejected')`,
-      [appt.doctor_id, new_date, new_time, id]
-    );
+    const conflict = await Appointment.findOne({
+      doctor: appt.doctor,
+      appointment_date: new_date,
+      appointment_time: new_time,
+      _id: { $ne: appt._id },
+      status: { $nin: ['Cancelled', 'Rejected'] }
+    });
 
     if (conflict) {
       return res.status(400).json({ success: false, message: 'The selected slot is already booked. Please pick another time.' });
     }
 
-    execute(
-      'UPDATE appointments SET appointment_date = ?, appointment_time = ?, status = ? WHERE appointment_id = ?',
-      [new_date, new_time, 'Pending', id]
-    );
+    appt.appointment_date = new_date;
+    appt.appointment_time = new_time;
+    appt.status = 'Pending';
+    await appt.save();
 
     return res.json({ success: true, message: 'Appointment rescheduled successfully!' });
   } catch (error) {

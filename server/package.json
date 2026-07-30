@@ -1,17 +1,15 @@
 {
   "name": "book-a-doctor-backend",
   "version": "1.0.0",
-  "description": "SQL-backed REST API server for Book A Doctor platform",
+  "description": "MongoDB-backed MERN REST API server for Book A Doctor platform",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js",
-    "postinstall": "npm rebuild better-sqlite3"
+    "dev": "node --watch server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "better-sqlite3": "^11.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

@@ -1,6 +1,12 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { execute, queryOne, query } from '../config/db.js';
+import mongoose from 'mongoose';
+import User from '../models/User.js';
+import Patient from '../models/Patient.js';
+import Doctor from '../models/Doctor.js';
+import Specialization from '../models/Specialization.js';
+import DoctorAvailability from '../models/DoctorAvailability.js';
+import Notification from '../models/Notification.js';
 import { JWT_SECRET } from '../middleware/authMiddleware.js';
 
 export const registerPatient = async (req, res) => {
@@ -11,7 +17,7 @@ export const registerPatient = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Name, email, and password are required.' });
     }
 
-    const existingUser = queryOne('SELECT user_id FROM users WHERE email = ?', [email.toLowerCase().trim()]);
+    const existingUser = await User.findOne({ email: email.toLowerCase().trim() });
     if (existingUser) {
       return res.status(400).json({ success: false, message: 'An account with this email already exists.' });
     }
@@ -19,26 +25,32 @@ export const registerPatient = async (req, res) => {
     const hashedPassword = bcrypt.hashSync(password, 10);
     const defaultImage = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=400';
 
-    const userRes = execute(
-      `INSERT INTO users (name, email, password, phone, role, profile_image, address) 
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [name, email.toLowerCase().trim(), hashedPassword, phone || '', 'patient', defaultImage, address || '']
-    );
+    const user = await User.create({
+      name,
+      email: email.toLowerCase().trim(),
+      password: hashedPassword,
+      phone: phone || '',
+      role: 'patient',
+      profile_image: defaultImage,
+      address: address || ''
+    });
 
-    const patientRes = execute(
-      `INSERT INTO patients (user_id, date_of_birth, gender, address, medical_information) 
-       VALUES (?, ?, ?, ?, ?)`,
-      [userRes.lastInsertRowid, date_of_birth || '', gender || 'Other', address || '', medical_information || '']
-    );
+    const patient = await Patient.create({
+      user: user._id,
+      date_of_birth: date_of_birth || '',
+      gender: gender || 'Other',
+      medical_information: medical_information || ''
+    });
 
     // Welcome Notification
-    execute(
-      'INSERT INTO notifications (user_id, title, message) VALUES (?, ?, ?)',
-      [userRes.lastInsertRowid, 'Welcome to Book A Doctor!', 'Your patient account has been created successfully. Find top doctors and book your first appointment today.']
-    );
+    await Notification.create({
+      user: user._id,
+      title: 'Welcome to Book A Doctor!',
+      message: 'Your patient account has been created successfully. Find top doctors and book your first appointment today.'
+    });
 
     const token = jwt.sign(
-      { user_id: userRes.lastInsertRowid, role: 'patient' },
+      { user_id: user._id, role: 'patient' },
       JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -48,10 +60,10 @@ export const registerPatient = async (req, res) => {
       message: 'Patient registered successfully!',
       token,
       user: {
-        user_id: userRes.lastInsertRowid,
-        patient_id: patientRes.lastInsertRowid,
-        name,
-        email: email.toLowerCase().trim(),
+        user_id: user._id,
+        patient_id: patient._id,
+        name: user.name,
+        email: user.email,
         role: 'patient',
         profile_image: defaultImage
       }
@@ -85,57 +97,71 @@ export const registerDoctor = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Name, email, password, and specialization are required.' });
     }
 
-    const existingUser = queryOne('SELECT user_id FROM users WHERE email = ?', [email.toLowerCase().trim()]);
+    const existingUser = await User.findOne({ email: email.toLowerCase().trim() });
     if (existingUser) {
       return res.status(400).json({ success: false, message: 'An account with this email already exists.' });
+    }
+
+    let specDoc = null;
+    if (mongoose.Types.ObjectId.isValid(specialization_id)) {
+      specDoc = await Specialization.findById(specialization_id);
+    } else {
+      specDoc = await Specialization.findOne({ specialization_name: specialization_id });
+    }
+
+    if (!specDoc) {
+      specDoc = await Specialization.findOne();
     }
 
     const hashedPassword = bcrypt.hashSync(password, 10);
     const defaultImage = 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400';
 
-    const userRes = execute(
-      `INSERT INTO users (name, email, password, phone, role, profile_image, address) 
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [name, email.toLowerCase().trim(), hashedPassword, phone || '', 'doctor', defaultImage, address || location || '']
-    );
+    const user = await User.create({
+      name,
+      email: email.toLowerCase().trim(),
+      password: hashedPassword,
+      phone: phone || '',
+      role: 'doctor',
+      profile_image: defaultImage,
+      address: address || location || ''
+    });
 
-    const doctorRes = execute(
-      `INSERT INTO doctors 
-        (user_id, specialization_id, qualifications, experience, hospital, location, state, consultation_fee, about, languages, rating, verification_status) 
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        userRes.lastInsertRowid,
-        parseInt(specialization_id),
-        qualifications || '',
-        parseInt(experience || 0),
-        hospital || '',
-        location || '',
-        state || 'Tamil Nadu',
-        parseFloat(consultation_fee || 650),
-        about || '',
-        languages || 'English, Tamil',
-        0.0,
-        'pending' // Pending approval from Admin
-      ]
-    );
+    const doctor = await Doctor.create({
+      user: user._id,
+      specialization: specDoc._id,
+      qualifications: qualifications || 'MBBS, MD',
+      experience: Number(experience || 5),
+      hospital: hospital || 'Specialty Clinic',
+      location: location || 'Chennai',
+      state: state || 'Tamil Nadu',
+      consultation_fee: Number(consultation_fee || 650),
+      about: about || '',
+      languages: languages || 'Tamil, English',
+      rating: 0,
+      verification_status: 'pending' // Pending Admin approval
+    });
 
-    // Set Default Availability (Mon-Fri 9:00 - 17:00)
+    // Default availability Mon-Fri
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     for (const day of days) {
-      execute(
-        'INSERT INTO doctor_availability (doctor_id, day, start_time, end_time, appointment_duration) VALUES (?, ?, ?, ?, ?)',
-        [doctorRes.lastInsertRowid, day, '09:00', '17:00', 30]
-      );
+      await DoctorAvailability.create({
+        doctor: doctor._id,
+        day,
+        start_time: '09:00 AM',
+        end_time: '05:00 PM',
+        slot_duration_minutes: 30
+      });
     }
 
     // Welcome Notification
-    execute(
-      'INSERT INTO notifications (user_id, title, message) VALUES (?, ?, ?)',
-      [userRes.lastInsertRowid, 'Doctor Registration Submitted', 'Your registration is under administrator review. Once approved, your profile will be publicly listed for patient bookings.']
-    );
+    await Notification.create({
+      user: user._id,
+      title: 'Doctor Registration Submitted',
+      message: 'Your registration is under administrator review. Once approved, your profile will be publicly listed.'
+    });
 
     const token = jwt.sign(
-      { user_id: userRes.lastInsertRowid, role: 'doctor' },
+      { user_id: user._id, role: 'doctor' },
       JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -145,10 +171,10 @@ export const registerDoctor = async (req, res) => {
       message: 'Doctor account submitted for admin approval!',
       token,
       user: {
-        user_id: userRes.lastInsertRowid,
-        doctor_id: doctorRes.lastInsertRowid,
-        name,
-        email: email.toLowerCase().trim(),
+        user_id: user._id,
+        doctor_id: doctor._id,
+        name: user.name,
+        email: user.email,
         role: 'doctor',
         verification_status: 'pending',
         profile_image: defaultImage
@@ -168,7 +194,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Email and password are required.' });
     }
 
-    const user = queryOne('SELECT * FROM users WHERE email = ?', [email.toLowerCase().trim()]);
+    const user = await User.findOne({ email: email.toLowerCase().trim() });
     if (!user) {
       return res.status(401).json({ success: false, message: 'Invalid email or password.' });
     }
@@ -180,33 +206,42 @@ export const login = async (req, res) => {
 
     let roleDetails = {};
     if (user.role === 'patient') {
-      const patient = queryOne('SELECT patient_id, date_of_birth, gender, medical_information FROM patients WHERE user_id = ?', [user.user_id]);
-      if (patient) roleDetails = patient;
+      const patient = await Patient.findOne({ user: user._id });
+      if (patient) roleDetails = { patient_id: patient._id, date_of_birth: patient.date_of_birth, gender: patient.gender, medical_information: patient.medical_information };
     } else if (user.role === 'doctor') {
-      const doctor = queryOne(
-        `SELECT d.*, s.specialization_name 
-         FROM doctors d 
-         JOIN specializations s ON d.specialization_id = s.specialization_id 
-         WHERE d.user_id = ?`,
-        [user.user_id]
-      );
-      if (doctor) roleDetails = doctor;
+      const doctor = await Doctor.findOne({ user: user._id }).populate('specialization');
+      if (doctor) {
+        roleDetails = {
+          doctor_id: doctor._id,
+          qualifications: doctor.qualifications,
+          experience: doctor.experience,
+          hospital: doctor.hospital,
+          location: doctor.location,
+          state: doctor.state,
+          consultation_fee: doctor.consultation_fee,
+          rating: doctor.rating,
+          verification_status: doctor.verification_status,
+          specialization_name: doctor.specialization?.specialization_name || 'General'
+        };
+      }
     }
 
     const token = jwt.sign(
-      { user_id: user.user_id, role: user.role },
+      { user_id: user._id, role: user.role },
       JWT_SECRET,
       { expiresIn: '7d' }
     );
 
-    delete user.password;
+    const userObj = user.toObject();
+    delete userObj.password;
+    userObj.user_id = user._id;
 
     return res.json({
       success: true,
       message: 'Login successful',
       token,
       user: {
-        ...user,
+        ...userObj,
         ...roleDetails
       }
     });
@@ -222,17 +257,24 @@ export const getMe = async (req, res) => {
     let roleDetails = {};
 
     if (user.role === 'patient') {
-      const patient = queryOne('SELECT patient_id, date_of_birth, gender, medical_information FROM patients WHERE user_id = ?', [user.user_id]);
-      if (patient) roleDetails = patient;
+      const patient = await Patient.findOne({ user: user.user_id });
+      if (patient) roleDetails = { patient_id: patient._id, date_of_birth: patient.date_of_birth, gender: patient.gender, medical_information: patient.medical_information };
     } else if (user.role === 'doctor') {
-      const doctor = queryOne(
-        `SELECT d.*, s.specialization_name 
-         FROM doctors d 
-         JOIN specializations s ON d.specialization_id = s.specialization_id 
-         WHERE d.user_id = ?`,
-        [user.user_id]
-      );
-      if (doctor) roleDetails = doctor;
+      const doctor = await Doctor.findOne({ user: user.user_id }).populate('specialization');
+      if (doctor) {
+        roleDetails = {
+          doctor_id: doctor._id,
+          qualifications: doctor.qualifications,
+          experience: doctor.experience,
+          hospital: doctor.hospital,
+          location: doctor.location,
+          state: doctor.state,
+          consultation_fee: doctor.consultation_fee,
+          rating: doctor.rating,
+          verification_status: doctor.verification_status,
+          specialization_name: doctor.specialization?.specialization_name || 'General'
+        };
+      }
     }
 
     return res.json({
@@ -252,23 +294,22 @@ export const updateProfile = async (req, res) => {
     const userId = req.user.user_id;
     const { name, phone, address, profile_image, medical_information, qualifications, experience, hospital, location, consultation_fee, about, languages } = req.body;
 
-    execute(
-      'UPDATE users SET name = ?, phone = ?, address = ?, profile_image = ? WHERE user_id = ?',
-      [name || req.user.name, phone || req.user.phone, address || req.user.address, profile_image || req.user.profile_image, userId]
-    );
+    await User.findByIdAndUpdate(userId, {
+      name: name || req.user.name,
+      phone: phone || req.user.phone,
+      address: address || req.user.address,
+      profile_image: profile_image || req.user.profile_image
+    });
 
     if (req.user.role === 'patient') {
-      execute(
-        'UPDATE patients SET address = ?, medical_information = ? WHERE user_id = ?',
-        [address || req.user.address, medical_information || '', userId]
-      );
+      await Patient.findOneAndUpdate({ user: userId }, {
+        address: address || req.user.address,
+        medical_information: medical_information || ''
+      });
     } else if (req.user.role === 'doctor') {
-      execute(
-        `UPDATE doctors SET 
-          qualifications = ?, experience = ?, hospital = ?, location = ?, consultation_fee = ?, about = ?, languages = ? 
-         WHERE user_id = ?`,
-        [qualifications, experience, hospital, location, consultation_fee, about, languages, userId]
-      );
+      await Doctor.findOneAndUpdate({ user: userId }, {
+        qualifications, experience, hospital, location, consultation_fee, about, languages
+      });
     }
 
     return res.json({ success: true, message: 'Profile updated successfully!' });

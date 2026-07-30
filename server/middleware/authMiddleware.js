@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { queryOne } from '../config/db.js';
+import User from '../models/User.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'book_a_doctor_secret_jwt_key_2026';
 
@@ -11,23 +11,25 @@ export function authenticateToken(req, res, next) {
     return res.status(401).json({ success: false, message: 'Authentication required. No token provided.' });
   }
 
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, JWT_SECRET, async (err, decoded) => {
     if (err) {
       return res.status(403).json({ success: false, message: 'Invalid or expired token.' });
     }
 
-    // Fetch fresh user details from DB
-    const user = queryOne(
-      'SELECT user_id, name, email, role, profile_image, address, phone FROM users WHERE user_id = ?',
-      [decoded.user_id]
-    );
+    try {
+      const user = await User.findById(decoded.user_id).select('-password');
+      if (!user) {
+        return res.status(404).json({ success: false, message: 'User account not found.' });
+      }
 
-    if (!user) {
-      return res.status(404).json({ success: false, message: 'User account not found.' });
+      const userObj = user.toObject();
+      userObj.user_id = user._id;
+
+      req.user = userObj;
+      next();
+    } catch (error) {
+      return res.status(500).json({ success: false, message: 'Authentication failed.' });
     }
-
-    req.user = user;
-    next();
   });
 }
 

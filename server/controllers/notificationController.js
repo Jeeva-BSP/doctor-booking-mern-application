@@ -1,16 +1,20 @@
-import { query, execute } from '../config/db.js';
+import Notification from '../models/Notification.js';
 
 export const getNotifications = async (req, res) => {
   try {
     const userId = req.user.user_id;
-    const notifications = query(
-      'SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC',
-      [userId]
-    );
+    const notifications = await Notification.find({ user: userId }).sort({ created_at: -1 });
+    const unreadCount = notifications.filter(n => !n.is_read).length;
 
-    const unreadCount = notifications.filter(n => n.is_read === 0).length;
+    const formatted = notifications.map(n => ({
+      notification_id: n._id,
+      title: n.title,
+      message: n.message,
+      is_read: n.is_read ? 1 : 0,
+      created_at: n.created_at
+    }));
 
-    return res.json({ success: true, count: notifications.length, unreadCount, notifications });
+    return res.json({ success: true, count: formatted.length, unreadCount, notifications: formatted });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to fetch notifications.' });
   }
@@ -22,9 +26,9 @@ export const markAsRead = async (req, res) => {
     const { id } = req.params;
 
     if (id === 'all') {
-      execute('UPDATE notifications SET is_read = 1 WHERE user_id = ?', [userId]);
+      await Notification.updateMany({ user: userId }, { is_read: true });
     } else {
-      execute('UPDATE notifications SET is_read = 1 WHERE notification_id = ? AND user_id = ?', [id, userId]);
+      await Notification.findOneAndUpdate({ _id: id, user: userId }, { is_read: true });
     }
 
     return res.json({ success: true, message: 'Notification(s) marked as read.' });

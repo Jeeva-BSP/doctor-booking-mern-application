@@ -10,7 +10,6 @@ import adminRoutes from './routes/adminRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import { connectMongo } from './config/dbMongo.js';
 import { seedMongoDatabase } from './database/seedMongo.js';
-import { seedDatabase } from './database/seed.js';
 import { exportDatabase } from './controllers/adminController.js';
 
 dotenv.config();
@@ -27,9 +26,6 @@ connectMongo().then(() => {
   seedMongoDatabase();
 }).catch(console.error);
 
-// Auto-seed SQL database if empty
-seedDatabase();
-
 // Register API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/doctors', doctorRoutes);
@@ -39,12 +35,12 @@ app.use('/api/favorites', favoriteRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/notifications', notificationRoutes);
 
-// Direct DB Export Route
+// Direct MongoDB Export Route
 app.get('/api/export-database', exportDatabase);
 
 // Health Check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Book A Doctor API Server is running smoothly!' });
+  res.json({ status: 'ok', message: 'Book A Doctor MERN MongoDB API Server is running smoothly!' });
 });
 
 // Fallback error handler
@@ -55,7 +51,7 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`=================================================`);
-  console.log(`  🚀 Book A Doctor API Server running on port ${PORT}`);
+  console.log(`  🚀 Book A Doctor MERN API Server running on port ${PORT}`);
   console.log(`  Health Check: http://localhost:${PORT}/api/health`);
   console.log(`=================================================`);
 });

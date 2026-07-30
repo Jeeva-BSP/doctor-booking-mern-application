@@ -1,25 +1,18 @@
-import { query, queryOne, execute } from '../config/db.js';
+import Favorite from '../models/Favorite.js';
+import Doctor from '../models/Doctor.js';
 
 export const toggleFavorite = async (req, res) => {
   try {
     const user = req.user;
     const { doctor_id } = req.body;
 
-    const patient = queryOne('SELECT patient_id FROM patients WHERE user_id = ?', [user.user_id]);
-    if (!patient) {
-      return res.status(403).json({ success: false, message: 'Only patients can add favorite doctors.' });
-    }
-
-    const existing = queryOne(
-      'SELECT favorite_id FROM favorites WHERE patient_id = ? AND doctor_id = ?',
-      [patient.patient_id, doctor_id]
-    );
+    const existing = await Favorite.findOne({ patient: user.user_id, doctor: doctor_id });
 
     if (existing) {
-      execute('DELETE FROM favorites WHERE favorite_id = ?', [existing.favorite_id]);
+      await Favorite.findByIdAndDelete(existing._id);
       return res.json({ success: true, isFavorite: false, message: 'Doctor removed from favorites.' });
     } else {
-      execute('INSERT INTO favorites (patient_id, doctor_id) VALUES (?, ?)', [patient.patient_id, doctor_id]);
+      await Favorite.create({ patient: user.user_id, doctor: doctor_id });
       return res.json({ success: true, isFavorite: true, message: 'Doctor added to favorites!' });
     }
   } catch (error) {
@@ -30,26 +23,31 @@ export const toggleFavorite = async (req, res) => {
 export const getFavorites = async (req, res) => {
   try {
     const user = req.user;
-    const patient = queryOne('SELECT patient_id FROM patients WHERE user_id = ?', [user.user_id]);
-    if (!patient) {
-      return res.status(403).json({ success: false, message: 'Only patients have favorites.' });
-    }
+    const favs = await Favorite.find({ patient: user.user_id })
+      .populate({
+        path: 'doctor',
+        populate: [
+          { path: 'user', select: 'name profile_image' },
+          { path: 'specialization', select: 'specialization_name' }
+        ]
+      })
+      .sort({ created_at: -1 });
 
-    const favorites = query(
-      `SELECT 
-        f.favorite_id, f.created_at as favorited_at,
-        d.doctor_id, d.qualifications, d.experience, d.hospital, d.location, d.consultation_fee, d.rating,
-        u.name as doctor_name, u.profile_image, s.specialization_name
-       FROM favorites f
-       JOIN doctors d ON f.doctor_id = d.doctor_id
-       JOIN users u ON d.user_id = u.user_id
-       JOIN specializations s ON d.specialization_id = s.specialization_id
-       WHERE f.patient_id = ?
-       ORDER BY f.created_at DESC`,
-      [patient.patient_id]
-    );
+    const formatted = favs.map(f => ({
+      favorite_id: f._id,
+      doctor_id: f.doctor?._id,
+      qualifications: f.doctor?.qualifications,
+      experience: f.doctor?.experience,
+      hospital: f.doctor?.hospital,
+      location: f.doctor?.location,
+      consultation_fee: f.doctor?.consultation_fee,
+      rating: f.doctor?.rating,
+      doctor_name: f.doctor?.user?.name || 'Doctor',
+      profile_image: f.doctor?.user?.profile_image || '',
+      specialization_name: f.doctor?.specialization?.specialization_name || 'General'
+    }));
 
-    return res.json({ success: true, count: favorites.length, favorites });
+    return res.json({ success: true, count: formatted.length, favorites: formatted });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to fetch favorites.' });
   }

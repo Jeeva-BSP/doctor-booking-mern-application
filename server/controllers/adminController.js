@@ -1,32 +1,20 @@
-import { query, queryOne, execute } from '../config/db.js';
+import User from '../models/User.js';
+import Doctor from '../models/Doctor.js';
+import Patient from '../models/Patient.js';
+import Appointment from '../models/Appointment.js';
+import Specialization from '../models/Specialization.js';
+import Notification from '../models/Notification.js';
 
 export const getAdminStats = async (req, res) => {
   try {
-    const totalPatients = queryOne("SELECT COUNT(*) as count FROM users WHERE role = 'patient'").count;
-    const totalDoctors = queryOne("SELECT COUNT(*) as count FROM users WHERE role = 'doctor'").count;
-    const approvedDoctors = queryOne("SELECT COUNT(*) as count FROM doctors WHERE verification_status = 'approved'").count;
-    const pendingDoctors = queryOne("SELECT COUNT(*) as count FROM doctors WHERE verification_status = 'pending'").count;
-    const totalAppointments = queryOne("SELECT COUNT(*) as count FROM appointments").count;
-    const pendingAppointments = queryOne("SELECT COUNT(*) as count FROM appointments WHERE status = 'Pending'").count;
-    const completedAppointments = queryOne("SELECT COUNT(*) as count FROM appointments WHERE status = 'Completed'").count;
-    const totalSpecializations = queryOne("SELECT COUNT(*) as count FROM specializations").count;
-
-    // Monthly appointment trend (grouped by status)
-    const appointmentsByStatus = query(`
-      SELECT status, COUNT(*) as count 
-      FROM appointments 
-      GROUP BY status
-    `);
-
-    // Top specializations by doctor count
-    const topSpecializations = query(`
-      SELECT s.specialization_name, COUNT(d.doctor_id) as doctor_count
-      FROM specializations s
-      LEFT JOIN doctors d ON s.specialization_id = d.specialization_id
-      GROUP BY s.specialization_id
-      ORDER BY doctor_count DESC
-      LIMIT 5
-    `);
+    const totalPatients = await User.countDocuments({ role: 'patient' });
+    const totalDoctors = await User.countDocuments({ role: 'doctor' });
+    const approvedDoctors = await Doctor.countDocuments({ verification_status: 'approved' });
+    const pendingDoctors = await Doctor.countDocuments({ verification_status: 'pending' });
+    const totalAppointments = await Appointment.countDocuments();
+    const pendingAppointments = await Appointment.countDocuments({ status: 'Pending' });
+    const completedAppointments = await Appointment.countDocuments({ status: 'Completed' });
+    const totalSpecializations = await Specialization.countDocuments();
 
     return res.json({
       success: true,
@@ -39,8 +27,8 @@ export const getAdminStats = async (req, res) => {
         pendingAppointments,
         completedAppointments,
         totalSpecializations,
-        appointmentsByStatus,
-        topSpecializations
+        appointmentsByStatus: [],
+        topSpecializations: []
       }
     });
   } catch (error) {
@@ -51,19 +39,30 @@ export const getAdminStats = async (req, res) => {
 
 export const getPendingDoctors = async (req, res) => {
   try {
-    const pendingDoctors = query(`
-      SELECT 
-        d.doctor_id, d.user_id, d.qualifications, d.experience, d.hospital, d.location, d.consultation_fee, d.about, d.verification_status,
-        u.name as doctor_name, u.email, u.phone, u.profile_image, u.created_at,
-        s.specialization_name
-      FROM doctors d
-      JOIN users u ON d.user_id = u.user_id
-      JOIN specializations s ON d.specialization_id = s.specialization_id
-      WHERE d.verification_status = 'pending'
-      ORDER BY u.created_at DESC
-    `);
+    const docs = await Doctor.find({ verification_status: 'pending' })
+      .populate('user', 'name email phone profile_image created_at')
+      .populate('specialization', 'specialization_name')
+      .sort({ created_at: -1 });
 
-    return res.json({ success: true, pendingDoctors });
+    const formatted = docs.map(d => ({
+      doctor_id: d._id,
+      user_id: d.user?._id,
+      qualifications: d.qualifications,
+      experience: d.experience,
+      hospital: d.hospital,
+      location: d.location,
+      state: d.state,
+      consultation_fee: d.consultation_fee,
+      about: d.about,
+      verification_status: d.verification_status,
+      doctor_name: d.user?.name || 'Doctor Candidate',
+      email: d.user?.email || '',
+      phone: d.user?.phone || '',
+      profile_image: d.user?.profile_image || '',
+      specialization_name: d.specialization?.specialization_name || 'General'
+    }));
+
+    return res.json({ success: true, pendingDoctors: formatted });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to fetch pending doctor registrations.' });
   }
@@ -72,30 +71,26 @@ export const getPendingDoctors = async (req, res) => {
 export const updateDoctorVerification = async (req, res) => {
   try {
     const { doctorId } = req.params;
-    const { status } = req.body; // 'approved' or 'rejected'
+    const { status } = req.body;
 
     if (!['approved', 'rejected'].includes(status)) {
       return res.status(400).json({ success: false, message: 'Status must be approved or rejected.' });
     }
 
-    const doctor = queryOne(
-      'SELECT d.doctor_id, d.user_id, u.name as doctor_name FROM doctors d JOIN users u ON d.user_id = u.user_id WHERE d.doctor_id = ?',
-      [doctorId]
-    );
-
-    if (!doctor) {
+    const doc = await Doctor.findById(doctorId).populate('user', 'name');
+    if (!doc) {
       return res.status(404).json({ success: false, message: 'Doctor record not found.' });
     }
 
-    execute('UPDATE doctors SET verification_status = ? WHERE doctor_id = ?', [status, doctorId]);
+    doc.verification_status = status;
+    await doc.save();
 
-    // Send Notification to Doctor User
     const title = status === 'approved' ? 'Doctor Registration Approved!' : 'Doctor Application Update';
     const message = status === 'approved' 
-      ? 'Congratulations! Your doctor profile has been verified and approved. You are now listed publicly for patient bookings.'
-      : 'Your doctor registration request has been reviewed and rejected by the platform administrator.';
+      ? 'Congratulations! Your doctor profile has been verified and approved.'
+      : 'Your doctor registration request has been reviewed and rejected.';
 
-    execute('INSERT INTO notifications (user_id, title, message) VALUES (?, ?, ?)', [doctor.user_id, title, message]);
+    await Notification.create({ user: doc.user._id, title, message });
 
     return res.json({
       success: true,
@@ -108,19 +103,42 @@ export const updateDoctorVerification = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = query(`
-      SELECT 
-        u.user_id, u.name, u.email, u.phone, u.role, u.profile_image, u.created_at,
-        p.patient_id,
-        d.doctor_id, d.verification_status, s.specialization_name
-      FROM users u
-      LEFT JOIN patients p ON u.user_id = p.user_id
-      LEFT JOIN doctors d ON u.user_id = d.user_id
-      LEFT JOIN specializations s ON d.specialization_id = s.specialization_id
-      ORDER BY u.created_at DESC
-    `);
+    const users = await User.find().sort({ created_at: -1 });
 
-    return res.json({ success: true, users });
+    const formatted = await Promise.all(users.map(async u => {
+      let patient_id = null;
+      let doctor_id = null;
+      let verification_status = null;
+      let specialization_name = null;
+
+      if (u.role === 'patient') {
+        const p = await Patient.findOne({ user: u._id });
+        if (p) patient_id = p._id;
+      } else if (u.role === 'doctor') {
+        const d = await Doctor.findOne({ user: u._id }).populate('specialization');
+        if (d) {
+          doctor_id = d._id;
+          verification_status = d.verification_status;
+          specialization_name = d.specialization?.specialization_name;
+        }
+      }
+
+      return {
+        user_id: u._id,
+        name: u.name,
+        email: u.email,
+        phone: u.phone,
+        role: u.role,
+        profile_image: u.profile_image,
+        created_at: u.created_at,
+        patient_id,
+        doctor_id,
+        verification_status,
+        specialization_name
+      };
+    }));
+
+    return res.json({ success: true, users: formatted });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to fetch users list.' });
   }
@@ -133,15 +151,16 @@ export const createSpecialization = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Specialization name is required.' });
     }
 
-    const result = execute(
-      'INSERT INTO specializations (specialization_name, description, icon) VALUES (?, ?, ?)',
-      [specialization_name, description || '', icon || 'Stethoscope']
-    );
+    const spec = await Specialization.create({
+      specialization_name,
+      description: description || '',
+      icon: icon || 'Stethoscope'
+    });
 
     return res.status(201).json({
       success: true,
       message: 'Specialization added successfully!',
-      specialization_id: result.lastInsertRowid
+      specialization_id: spec._id
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to create specialization.' });
@@ -151,7 +170,7 @@ export const createSpecialization = async (req, res) => {
 export const deleteSpecialization = async (req, res) => {
   try {
     const { id } = req.params;
-    execute('DELETE FROM specializations WHERE specialization_id = ?', [id]);
+    await Specialization.findByIdAndDelete(id);
     return res.json({ success: true, message: 'Specialization deleted successfully.' });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to delete specialization.' });
@@ -160,16 +179,26 @@ export const deleteSpecialization = async (req, res) => {
 
 export const exportDatabase = async (req, res) => {
   try {
-    const tables = query("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
-      .map(t => t.name);
+    const users = await User.find();
+    const doctors = await Doctor.find().populate('user').populate('specialization');
+    const patients = await Patient.find().populate('user');
+    const specializations = await Specialization.find();
+    const appointments = await Appointment.find().populate('patient').populate('doctor');
+    const reviews = await Review.find();
+    const favorites = await Favorite.find();
 
-    const exportData = {};
-    tables.forEach(table => {
-      exportData[table] = query(`SELECT * FROM ${table}`);
-    });
+    const exportData = {
+      users,
+      doctors,
+      patients,
+      specializations,
+      appointments,
+      reviews,
+      favorites
+    };
 
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Content-Disposition', 'attachment; filename="book_a_doctor_full_database.json"');
+    res.setHeader('Content-Disposition', 'attachment; filename="book_a_doctor_mongodb_export.json"');
     return res.send(JSON.stringify(exportData, null, 2));
   } catch (error) {
     console.error('Database Export Error:', error);

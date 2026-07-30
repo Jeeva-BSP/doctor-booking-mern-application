@@ -1,4 +1,6 @@
-import { query, queryOne, execute } from '../config/db.js';
+import Review from '../models/Review.js';
+import Appointment from '../models/Appointment.js';
+import Doctor from '../models/Doctor.js';
 
 export const createReview = async (req, res) => {
   try {
@@ -9,42 +11,33 @@ export const createReview = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Appointment ID, Doctor ID, and rating (1-5) are required.' });
     }
 
-    const patient = queryOne('SELECT patient_id FROM patients WHERE user_id = ?', [user.user_id]);
-    if (!patient) {
-      return res.status(403).json({ success: false, message: 'Only patients can leave reviews.' });
-    }
-
-    // Verify appointment status is 'Completed'
-    const appointment = queryOne(
-      'SELECT * FROM appointments WHERE appointment_id = ? AND patient_id = ? AND doctor_id = ?',
-      [appointment_id, patient.patient_id, doctor_id]
-    );
-
-    if (!appointment) {
+    const appt = await Appointment.findById(appointment_id);
+    if (!appt) {
       return res.status(404).json({ success: false, message: 'Appointment record not found.' });
     }
 
-    if (appointment.status !== 'Completed') {
+    if (appt.status !== 'Completed') {
       return res.status(400).json({ success: false, message: 'Reviews can only be submitted for completed appointments.' });
     }
 
-    // Check if review already exists for this appointment
-    const existingReview = queryOne('SELECT review_id FROM reviews WHERE appointment_id = ?', [appointment_id]);
-    if (existingReview) {
+    const existing = await Review.findOne({ appointment: appointment_id });
+    if (existing) {
       return res.status(400).json({ success: false, message: 'You have already reviewed this appointment.' });
     }
 
-    // Insert Review
-    execute(
-      'INSERT INTO reviews (patient_id, doctor_id, appointment_id, rating, comment) VALUES (?, ?, ?, ?, ?)',
-      [patient.patient_id, doctor_id, appointment_id, parseInt(rating), comment || '']
-    );
+    const rev = await Review.create({
+      appointment: appointment_id,
+      patient: user.user_id,
+      doctor: doctor_id,
+      rating: Number(rating),
+      comment: comment || ''
+    });
 
-    // Recalculate and update doctor's average rating in SQL
-    const avgResult = queryOne('SELECT AVG(rating) as avg_rating FROM reviews WHERE doctor_id = ?', [doctor_id]);
-    const newRating = avgResult && avgResult.avg_rating ? parseFloat(avgResult.avg_rating.toFixed(2)) : parseFloat(rating);
+    const reviews = await Review.find({ doctor: doctor_id });
+    const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+    const newRating = Number((sum / reviews.length).toFixed(1));
 
-    execute('UPDATE doctors SET rating = ? WHERE doctor_id = ?', [newRating, doctor_id]);
+    await Doctor.findByIdAndUpdate(doctor_id, { rating: newRating });
 
     return res.status(201).json({
       success: true,

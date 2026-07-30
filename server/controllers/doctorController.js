@@ -1,4 +1,9 @@
-import { query, queryOne, execute } from '../config/db.js';
+import mongoose from 'mongoose';
+import Doctor from '../models/Doctor.js';
+import User from '../models/User.js';
+import Specialization from '../models/Specialization.js';
+import DoctorAvailability from '../models/DoctorAvailability.js';
+import Review from '../models/Review.js';
 
 export const getAllDoctors = async (req, res) => {
   try {
@@ -15,98 +20,104 @@ export const getAllDoctors = async (req, res) => {
       sortBy
     } = req.query;
 
-    let sql = `
-      SELECT 
-        d.doctor_id, d.user_id, d.qualifications, d.experience, d.hospital, 
-        d.location, d.state, d.consultation_fee, d.about, d.languages, d.rating, d.verification_status,
-        u.name as doctor_name, u.email, u.phone, u.profile_image,
-        s.specialization_id, s.specialization_name, s.icon as specialization_icon
-      FROM doctors d
-      JOIN users u ON d.user_id = u.user_id
-      JOIN specializations s ON d.specialization_id = s.specialization_id
-      WHERE d.verification_status = 'approved'
-    `;
-
-    const params = [];
-
-    // Search query (doctor name, hospital, specialization, location, or state)
-    if (search && search.trim() !== '') {
-      sql += ` AND (u.name LIKE ? OR d.hospital LIKE ? OR s.specialization_name LIKE ? OR d.location LIKE ? OR d.state LIKE ?)`;
-      const term = `%${search.trim()}%`;
-      params.push(term, term, term, term, term);
-    }
+    const filter = { verification_status: 'approved' };
 
     // Specialization filter
     if (specialization && specialization !== 'all') {
-      if (!isNaN(specialization)) {
-        sql += ` AND d.specialization_id = ?`;
-        params.push(parseInt(specialization));
+      if (mongoose.Types.ObjectId.isValid(specialization)) {
+        filter.specialization = specialization;
       } else {
-        sql += ` AND s.specialization_name LIKE ?`;
-        params.push(`%${specialization}%`);
+        const specDoc = await Specialization.findOne({ specialization_name: new RegExp(specialization, 'i') });
+        if (specDoc) filter.specialization = specDoc._id;
       }
     }
 
-    // Location/City/District filter
+    // Location / City / District filter
     if (location && location.trim() !== '' && location !== 'all') {
-      sql += ` AND (d.location LIKE ? OR u.address LIKE ? OR d.state LIKE ?)`;
-      const locTerm = `%${location.trim()}%`;
-      params.push(locTerm, locTerm, locTerm);
+      filter.$or = [
+        { location: new RegExp(location.trim(), 'i') },
+        { state: new RegExp(location.trim(), 'i') }
+      ];
     }
 
     // State filter
     if (state && state.trim() !== '' && state !== 'all') {
-      sql += ` AND d.state LIKE ?`;
-      params.push(`%${state.trim()}%`);
+      filter.state = new RegExp(state.trim(), 'i');
     }
 
     // Fee range filter
-    if (minFee) {
-      sql += ` AND d.consultation_fee >= ?`;
-      params.push(parseFloat(minFee));
-    }
-    if (maxFee) {
-      sql += ` AND d.consultation_fee <= ?`;
-      params.push(parseFloat(maxFee));
+    if (minFee || maxFee) {
+      filter.consultation_fee = {};
+      if (minFee) filter.consultation_fee.$gte = Number(minFee);
+      if (maxFee) filter.consultation_fee.$lte = Number(maxFee);
     }
 
     // Experience filter
     if (minExperience) {
-      sql += ` AND d.experience >= ?`;
-      params.push(parseInt(minExperience));
+      filter.experience = { $gte: Number(minExperience) };
     }
 
     // Rating filter
     if (minRating) {
-      sql += ` AND d.rating >= ?`;
-      params.push(parseFloat(minRating));
+      filter.rating = { $gte: Number(minRating) };
     }
 
     // Day availability filter
     if (day) {
-      sql += ` AND d.doctor_id IN (SELECT doctor_id FROM doctor_availability WHERE day = ?)`;
-      params.push(day);
+      const availDocs = await DoctorAvailability.find({ day: new RegExp(day, 'i') }).distinct('doctor');
+      filter._id = { $in: availDocs };
     }
 
-    // Sorting
-    if (sortBy === 'rating') {
-      sql += ` ORDER BY d.rating DESC`;
-    } else if (sortBy === 'experience') {
-      sql += ` ORDER BY d.experience DESC`;
-    } else if (sortBy === 'fee_low') {
-      sql += ` ORDER BY d.consultation_fee ASC`;
-    } else if (sortBy === 'fee_high') {
-      sql += ` ORDER BY d.consultation_fee DESC`;
-    } else {
-      sql += ` ORDER BY d.rating DESC, d.experience DESC`;
+    let sort = { rating: -1, experience: -1 };
+    if (sortBy === 'rating') sort = { rating: -1 };
+    else if (sortBy === 'experience') sort = { experience: -1 };
+    else if (sortBy === 'fee_low') sort = { consultation_fee: 1 };
+    else if (sortBy === 'fee_high') sort = { consultation_fee: -1 };
+
+    let doctors = await Doctor.find(filter)
+      .populate('user', 'name email phone profile_image address')
+      .populate('specialization', 'specialization_name icon')
+      .sort(sort);
+
+    // Apply text search filter on doctor name / hospital / specialization
+    if (search && search.trim() !== '') {
+      const searchRegex = new RegExp(search.trim(), 'i');
+      doctors = doctors.filter(doc => 
+        (doc.user && searchRegex.test(doc.user.name)) ||
+        searchRegex.test(doc.hospital) ||
+        searchRegex.test(doc.location) ||
+        searchRegex.test(doc.state) ||
+        (doc.specialization && searchRegex.test(doc.specialization.specialization_name))
+      );
     }
 
-    const doctors = query(sql, params);
+    // Format output objects to match expected keys
+    const formattedDoctors = doctors.map(doc => ({
+      doctor_id: doc._id,
+      user_id: doc.user?._id,
+      qualifications: doc.qualifications,
+      experience: doc.experience,
+      hospital: doc.hospital,
+      location: doc.location,
+      state: doc.state,
+      consultation_fee: doc.consultation_fee,
+      about: doc.about,
+      languages: doc.languages,
+      rating: doc.rating,
+      verification_status: doc.verification_status,
+      doctor_name: doc.user?.name || 'Dr. Specialist',
+      email: doc.user?.email || '',
+      phone: doc.user?.phone || '',
+      profile_image: doc.user?.profile_image || '',
+      specialization_id: doc.specialization?._id,
+      specialization_name: doc.specialization?.specialization_name || 'General',
+      specialization_icon: doc.specialization?.icon || 'Stethoscope'
+    }));
 
     return res.json({
       success: true,
-      count: doctors.length,
-      doctors
+      count: formattedDoctors.length,
+      doctors: formattedDoctors
     });
   } catch (error) {
     console.error('Error fetching doctors:', error);
@@ -118,46 +129,57 @@ export const getDoctorById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const doctor = queryOne(
-      `SELECT 
-        d.doctor_id, d.user_id, d.qualifications, d.experience, d.hospital, 
-        d.location, d.state, d.consultation_fee, d.about, d.languages, d.rating, d.verification_status,
-        u.name as doctor_name, u.email, u.phone, u.profile_image, u.address,
-        s.specialization_id, s.specialization_name, s.description as specialization_description, s.icon as specialization_icon
-       FROM doctors d
-       JOIN users u ON d.user_id = u.user_id
-       JOIN specializations s ON d.specialization_id = s.specialization_id
-       WHERE d.doctor_id = ?`,
-      [id]
-    );
+    const doc = await Doctor.findById(id)
+      .populate('user', 'name email phone profile_image address')
+      .populate('specialization', 'specialization_name description icon');
 
-    if (!doctor) {
+    if (!doc) {
       return res.status(404).json({ success: false, message: 'Doctor not found.' });
     }
 
-    // Get doctor working availability
-    const availability = query('SELECT * FROM doctor_availability WHERE doctor_id = ?', [id]);
+    const availability = await DoctorAvailability.find({ doctor: doc._id });
+    const reviews = await Review.find({ doctor: doc._id })
+      .populate('patient', 'name profile_image')
+      .sort({ created_at: -1 });
 
-    // Get doctor reviews with patient name and image
-    const reviews = query(
-      `SELECT 
-        r.review_id, r.rating, r.comment, r.created_at,
-        u.name as patient_name, u.profile_image as patient_image
-       FROM reviews r
-       JOIN patients p ON r.patient_id = p.patient_id
-       JOIN users u ON p.user_id = u.user_id
-       WHERE r.doctor_id = ?
-       ORDER BY r.created_at DESC`,
-      [id]
-    );
+    const formattedReviews = reviews.map(r => ({
+      review_id: r._id,
+      rating: r.rating,
+      comment: r.comment,
+      created_at: r.created_at,
+      patient_name: r.patient?.name || 'Verified Patient',
+      patient_image: r.patient?.profile_image || ''
+    }));
+
+    const formattedDoctor = {
+      doctor_id: doc._id,
+      user_id: doc.user?._id,
+      qualifications: doc.qualifications,
+      experience: doc.experience,
+      hospital: doc.hospital,
+      location: doc.location,
+      state: doc.state,
+      consultation_fee: doc.consultation_fee,
+      about: doc.about,
+      languages: doc.languages,
+      rating: doc.rating,
+      verification_status: doc.verification_status,
+      doctor_name: doc.user?.name || 'Dr. Specialist',
+      email: doc.user?.email || '',
+      phone: doc.user?.phone || '',
+      profile_image: doc.user?.profile_image || '',
+      address: doc.user?.address || '',
+      specialization_id: doc.specialization?._id,
+      specialization_name: doc.specialization?.specialization_name || 'General',
+      specialization_description: doc.specialization?.description || '',
+      specialization_icon: doc.specialization?.icon || 'Stethoscope',
+      availability,
+      reviews: formattedReviews
+    };
 
     return res.json({
       success: true,
-      doctor: {
-        ...doctor,
-        availability,
-        reviews
-      }
+      doctor: formattedDoctor
     });
   } catch (error) {
     console.error('Error fetching doctor profile:', error);
@@ -167,19 +189,22 @@ export const getDoctorById = async (req, res) => {
 
 export const getSpecializations = async (req, res) => {
   try {
-    const specializations = query(`
-      SELECT 
-        s.*, 
-        COUNT(d.doctor_id) as doctor_count
-      FROM specializations s
-      LEFT JOIN doctors d ON s.specialization_id = d.specialization_id AND d.verification_status = 'approved'
-      GROUP BY s.specialization_id
-      ORDER BY s.specialization_name ASC
-    `);
+    const specs = await Specialization.find().sort({ specialization_name: 1 });
+
+    const formattedSpecs = await Promise.all(specs.map(async s => {
+      const doctor_count = await Doctor.countDocuments({ specialization: s._id, verification_status: 'approved' });
+      return {
+        specialization_id: s._id,
+        specialization_name: s.specialization_name,
+        description: s.description,
+        icon: s.icon,
+        doctor_count
+      };
+    }));
 
     return res.json({
       success: true,
-      specializations
+      specializations: formattedSpecs
     });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Failed to fetch specializations.' });
@@ -189,28 +214,28 @@ export const getSpecializations = async (req, res) => {
 export const updateAvailability = async (req, res) => {
   try {
     const userId = req.user.user_id;
-    const doctor = queryOne('SELECT doctor_id FROM doctors WHERE user_id = ?', [userId]);
+    const doc = await Doctor.findOne({ user: userId });
 
-    if (!doctor) {
+    if (!doc) {
       return res.status(404).json({ success: false, message: 'Doctor record not found.' });
     }
 
-    const { schedule } = req.body; // Array of { day, start_time, end_time, appointment_duration }
-
+    const { schedule } = req.body;
     if (!Array.isArray(schedule)) {
       return res.status(400).json({ success: false, message: 'Schedule must be an array of daily availability.' });
     }
 
-    // Delete existing availability
-    execute('DELETE FROM doctor_availability WHERE doctor_id = ?', [doctor.doctor_id]);
+    await DoctorAvailability.deleteMany({ doctor: doc._id });
 
-    // Insert new schedule
     for (const item of schedule) {
       if (item.day && item.start_time && item.end_time) {
-        execute(
-          'INSERT INTO doctor_availability (doctor_id, day, start_time, end_time, appointment_duration) VALUES (?, ?, ?, ?, ?)',
-          [doctor.doctor_id, item.day, item.start_time, item.end_time, item.appointment_duration || 30]
-        );
+        await DoctorAvailability.create({
+          doctor: doc._id,
+          day: item.day,
+          start_time: item.start_time,
+          end_time: item.end_time,
+          slot_duration_minutes: item.appointment_duration || 30
+        });
       }
     }
 
