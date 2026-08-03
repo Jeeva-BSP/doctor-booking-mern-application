@@ -1,9 +1,9 @@
-specialization_id,specialization_name,description,icon
-"9","Cardiology","Heart and cardiovascular system care","Heart"
-"10","Dermatology","Skin, hair, and nail health care","Sparkles"
-"11","Neurology","Brain, spinal cord, and nervous system care","Activity"
-"12","Pediatrics","Infant, child, and adolescent medicine","Baby"
-"13","Orthopedics","Bones, joints, ligaments, and muscle care","Bone"
-"14","General Medicine","Comprehensive adult health and diagnosis","Stethoscope"
-"15","Psychiatry","Mental health diagnosis and treatment","Brain"
-"16","Gynecology","Women's reproductive health care","UserCheck"
+_id,specialization_name,description,icon,created_at,updated_at,__v
+"""6a7099a40770fd734ecafb38""","Cardiology","Heart and cardiovascular system care","Heart","""2026-08-03T13:37:40.796Z""","""2026-08-03T13:37:40.796Z""","0"
+"""6a7099a40770fd734ecafb39""","Dermatology","Skin, hair, and nail health care","Sparkles","""2026-08-03T13:37:40.813Z""","""2026-08-03T13:37:40.813Z""","0"
+"""6a7099a40770fd734ecafb3a""","Neurology","Brain, spinal cord, and nervous system care","Activity","""2026-08-03T13:37:40.826Z""","""2026-08-03T13:37:40.826Z""","0"
+"""6a7099a40770fd734ecafb3b""","Pediatrics","Infant, child, and adolescent medicine","Baby","""2026-08-03T13:37:40.830Z""","""2026-08-03T13:37:40.830Z""","0"
+"""6a7099a40770fd734ecafb3c""","Orthopedics","Bones, joints, ligaments, and muscle care","Bone","""2026-08-03T13:37:40.833Z""","""2026-08-03T13:37:40.833Z""","0"
+"""6a7099a40770fd734ecafb3d""","General Medicine","Comprehensive adult health and diagnosis","Stethoscope","""2026-08-03T13:37:40.837Z""","""2026-08-03T13:37:40.837Z""","0"
+"""6a7099a40770fd734ecafb3e""","Psychiatry","Mental health diagnosis and treatment","Brain","""2026-08-03T13:37:40.839Z""","""2026-08-03T13:37:40.839Z""","0"
+"""6a7099a40770fd734ecafb3f""","Gynecology","Women's reproductive health care","UserCheck","""2026-08-03T13:37:40.842Z""","""2026-08-03T13:37:40.842Z""","0"

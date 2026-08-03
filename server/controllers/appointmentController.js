@@ -6,18 +6,40 @@ import DoctorAvailability from '../models/DoctorAvailability.js';
 import Notification from '../models/Notification.js';
 import Review from '../models/Review.js';
 
+function parseTimeToMinutes(timeStr) {
+  if (!timeStr) return 9 * 60;
+  const isPM = /pm/i.test(timeStr);
+  const isAM = /am/i.test(timeStr);
+  const cleanStr = timeStr.replace(/(am|pm)/i, '').trim();
+  const parts = cleanStr.split(':').map(Number);
+  let hours = parts[0] || 0;
+  const minutes = parts[1] || 0;
+
+  if (isPM && hours < 12) hours += 12;
+  if (isAM && hours === 12) hours = 0;
+
+  return hours * 60 + minutes;
+}
+
 function generateTimeSlots(startTimeStr, endTimeStr, durationMinutes = 30) {
   const slots = [];
-  const [startHour, startMin] = startTimeStr.split(':').map(Number);
-  const [endHour, endMin] = endTimeStr.split(':').map(Number);
+  const startTotalMin = parseTimeToMinutes(startTimeStr || '09:00 AM');
+  let endTotalMin = parseTimeToMinutes(endTimeStr || '05:00 PM');
 
-  let currentMin = startHour * 60 + startMin;
-  const endTotalMin = endHour * 60 + endMin;
+  if (endTotalMin <= startTotalMin) {
+    endTotalMin = 17 * 60; // 5:00 PM (17:00)
+  }
+
+  let currentMin = startTotalMin;
 
   while (currentMin + durationMinutes <= endTotalMin) {
-    const hh = String(Math.floor(currentMin / 60)).padStart(2, '0');
-    const mm = String(currentMin % 60).padStart(2, '0');
-    slots.push(`${hh}:${mm}`);
+    const hours = Math.floor(currentMin / 60);
+    const mins = currentMin % 60;
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const displayHour = hours % 12 === 0 ? 12 : hours % 12;
+    const hh = String(displayHour).padStart(2, '0');
+    const mm = String(mins).padStart(2, '0');
+    slots.push(`${hh}:${mm} ${ampm}`);
     currentMin += durationMinutes;
   }
 
