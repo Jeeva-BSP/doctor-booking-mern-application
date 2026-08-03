@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Appointment from '../models/Appointment.js';
 import Doctor from '../models/Doctor.js';
 import User from '../models/User.js';
@@ -5,6 +6,22 @@ import Patient from '../models/Patient.js';
 import DoctorAvailability from '../models/DoctorAvailability.js';
 import Notification from '../models/Notification.js';
 import Review from '../models/Review.js';
+
+async function resolveDoctorDoc(doctorId) {
+  if (!doctorId) return null;
+  const idStr = String(doctorId).trim();
+  if (mongoose.Types.ObjectId.isValid(idStr)) {
+    const doc = await Doctor.findById(idStr).populate('user', 'name');
+    if (doc) return doc;
+  }
+  // Fallback for legacy numeric IDs (e.g. 6 or "6")
+  const doctors = await Doctor.find().populate('user', 'name');
+  const index = Number(idStr) - 1;
+  if (!isNaN(index) && index >= 0 && index < doctors.length) {
+    return doctors[index];
+  }
+  return null;
+}
 
 function parseTimeToMinutes(timeStr) {
   if (!timeStr) return 9 * 60;
@@ -54,12 +71,15 @@ export const getAvailableSlots = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Doctor ID and date are required.' });
     }
 
+    const doc = await resolveDoctorDoc(doctorId);
+    const resolvedDocId = doc ? doc._id : doctorId;
+
     const dateObj = new Date(date + 'T00:00:00');
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayName = dayNames[dateObj.getDay()];
 
     const availability = await DoctorAvailability.findOne({
-      doctor: doctorId,
+      doctor: resolvedDocId,
       day: new RegExp(dayName, 'i')
     });
 
@@ -80,7 +100,7 @@ export const getAvailableSlots = async (req, res) => {
     );
 
     const bookedAppointments = await Appointment.find({
-      doctor: doctorId,
+      doctor: resolvedDocId,
       appointment_date: date,
       status: { $nin: ['Cancelled', 'Rejected'] }
     });
@@ -129,14 +149,16 @@ export const createAppointment = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Cannot book appointments for past dates.' });
     }
 
-    const doc = await Doctor.findById(doctor_id).populate('user', 'name');
+    const doc = await resolveDoctorDoc(doctor_id);
     if (!doc || doc.verification_status !== 'approved') {
       return res.status(404).json({ success: false, message: 'Selected doctor is not available or approved.' });
     }
 
+    const realDoctorId = doc._id;
+
     // Doctor double-booking check
     const existingDoctorSlot = await Appointment.findOne({
-      doctor: doctor_id,
+      doctor: realDoctorId,
       appointment_date,
       appointment_time,
       status: { $nin: ['Cancelled', 'Rejected'] }
@@ -166,7 +188,7 @@ export const createAppointment = async (req, res) => {
 
     const appt = await Appointment.create({
       patient: user.user_id,
-      doctor: doctor_id,
+      doctor: realDoctorId,
       appointment_date,
       appointment_time,
       reason: reason || 'General Consultation',

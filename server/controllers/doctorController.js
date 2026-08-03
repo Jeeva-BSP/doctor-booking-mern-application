@@ -129,9 +129,20 @@ export const getDoctorById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const doc = await Doctor.findById(id)
-      .populate('user', 'name email phone profile_image address')
-      .populate('specialization', 'specialization_name description icon');
+    let doc = null;
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      doc = await Doctor.findById(id)
+        .populate('user', 'name email phone profile_image address')
+        .populate('specialization', 'specialization_name description icon');
+    } else {
+      const doctors = await Doctor.find()
+        .populate('user', 'name email phone profile_image address')
+        .populate('specialization', 'specialization_name description icon');
+      const numIndex = Number(id) - 1;
+      if (!isNaN(numIndex) && numIndex >= 0 && numIndex < doctors.length) {
+        doc = doctors[numIndex];
+      }
+    }
 
     if (!doc) {
       return res.status(404).json({ success: false, message: 'Doctor not found.' });
