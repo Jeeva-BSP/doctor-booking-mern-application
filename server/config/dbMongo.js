@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import { seedMongoDatabase } from '../database/seedMongo.js';
 dotenv.config();
 
 // Disable buffering so Mongoose fails fast instead of freezing for 10s if connection drops
