@@ -21,10 +21,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Auto-connect MongoDB and Seed MERN Database
-connectMongo().then(() => {
-  seedMongoDatabase();
-}).catch(console.error);
+// Auto-connect MongoDB (Atlas or In-Memory) and Seed Database
+connectMongo().catch(console.error);
 
 // Register API Routes
 app.use('/api/auth', authRoutes);
