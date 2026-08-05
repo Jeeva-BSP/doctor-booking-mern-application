@@ -2,6 +2,8 @@
 
 A full-stack Doctor Appointment Booking System built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**. The application allows patients to browse doctors, book appointments, manage bookings, while administrators manage doctors, users, and appointments through a dedicated dashboard.
 
+## Live link: https://doctor-booking-mern-application.vercel.app/
+
 ---
 
 ## 🚀 Features
