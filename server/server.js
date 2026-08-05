@@ -38,6 +38,18 @@ app.use('/api/notifications', notificationRoutes);
 // Direct MongoDB Export Route
 app.get('/api/export-database', exportDatabase);
 
+// Root Welcome Route
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    name: 'Book A Doctor REST API Server',
+    version: '1.0.0',
+    message: 'Welcome to Book A Doctor API Server!',
+    health_check: '/api/health',
+    frontend: 'https://doctor-booking-mern-application.vercel.app'
+  });
+});
+
 // Health Check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Book A Doctor MERN MongoDB API Server is running smoothly!' });
