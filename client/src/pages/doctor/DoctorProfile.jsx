@@ -144,8 +144,8 @@ export default function DoctorProfile() {
               <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Fee (₹)</label>
               <input
                 type="number"
-                min="500"
-                max="1000"
+                min="0"
+                max="10000"
                 value={fee}
                 onChange={(e) => setFee(e.target.value)}
                 className="w-full p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white"

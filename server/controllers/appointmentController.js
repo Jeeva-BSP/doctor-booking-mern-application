@@ -109,12 +109,15 @@ export const getAvailableSlots = async (req, res) => {
 
     const now = new Date();
     const todayStr = now.toISOString().split('T')[0];
-    const currentHHMM = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
     const slots = allSlots.map(time => {
       let isPast = false;
-      if (date === todayStr && time <= currentHHMM) {
-        isPast = true;
+      if (date === todayStr) {
+        const slotMinutes = parseTimeToMinutes(time);
+        if (slotMinutes <= currentMinutes) {
+          isPast = true;
+        }
       }
       return {
         time,
@@ -233,7 +236,7 @@ export const getAppointments = async (req, res) => {
       filter.patient = user.user_id;
     } else if (user.role === 'doctor') {
       const doc = await Doctor.findOne({ user: user.user_id });
-      if (doc) filter.doctor = doc._id;
+      filter.doctor = doc ? doc._id : new mongoose.Types.ObjectId();
     }
 
     if (status && status !== 'all') {

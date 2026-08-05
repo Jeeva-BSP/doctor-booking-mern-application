@@ -72,7 +72,7 @@ export default function Login() {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickDemo('sarah.jenkins@hospital.org', 'password123')}
+              onClick={() => handleQuickDemo('doctor@bookadoctor.com', 'password123')}
               className="py-1.5 px-2 bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800 rounded-xl text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition-colors"
             >
               Doctor

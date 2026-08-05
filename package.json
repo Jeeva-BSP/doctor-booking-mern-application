@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run dev --prefix calculator",
-    "dev:calculator": "npm run dev --prefix calculator",
+    "dev": "npm run dev --prefix client",
+    "dev:client": "npm run dev --prefix client",
     "build:client": "npm run build --prefix client",
     "deploy:client": "npm run deploy --prefix client",
     "start:server": "npm start --prefix server",

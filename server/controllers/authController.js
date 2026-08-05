@@ -219,6 +219,8 @@ export const login = async (req, res) => {
           location: doctor.location,
           state: doctor.state,
           consultation_fee: doctor.consultation_fee,
+          about: doctor.about || '',
+          languages: doctor.languages || 'Tamil, English',
           rating: doctor.rating,
           verification_status: doctor.verification_status,
           specialization_name: doctor.specialization?.specialization_name || 'General'
@@ -270,6 +272,8 @@ export const getMe = async (req, res) => {
           location: doctor.location,
           state: doctor.state,
           consultation_fee: doctor.consultation_fee,
+          about: doctor.about || '',
+          languages: doctor.languages || 'Tamil, English',
           rating: doctor.rating,
           verification_status: doctor.verification_status,
           specialization_name: doctor.specialization?.specialization_name || 'General'
@@ -292,24 +296,55 @@ export const getMe = async (req, res) => {
 export const updateProfile = async (req, res) => {
   try {
     const userId = req.user.user_id;
-    const { name, phone, address, profile_image, medical_information, qualifications, experience, hospital, location, consultation_fee, about, languages } = req.body;
+    const {
+      name,
+      phone,
+      address,
+      profile_image,
+      date_of_birth,
+      gender,
+      medical_information,
+      qualifications,
+      experience,
+      hospital,
+      location,
+      consultation_fee,
+      about,
+      languages
+    } = req.body;
 
-    await User.findByIdAndUpdate(userId, {
-      name: name || req.user.name,
-      phone: phone || req.user.phone,
-      address: address || req.user.address,
-      profile_image: profile_image || req.user.profile_image
-    });
+    const userUpdates = {};
+    if (name !== undefined) userUpdates.name = name;
+    if (phone !== undefined) userUpdates.phone = phone;
+    if (address !== undefined) userUpdates.address = address;
+    if (profile_image !== undefined) userUpdates.profile_image = profile_image;
+
+    if (Object.keys(userUpdates).length > 0) {
+      await User.findByIdAndUpdate(userId, userUpdates);
+    }
 
     if (req.user.role === 'patient') {
-      await Patient.findOneAndUpdate({ user: userId }, {
-        address: address || req.user.address,
-        medical_information: medical_information || ''
-      });
+      const patientUpdates = {};
+      if (date_of_birth !== undefined) patientUpdates.date_of_birth = date_of_birth;
+      if (gender !== undefined) patientUpdates.gender = gender;
+      if (medical_information !== undefined) patientUpdates.medical_information = medical_information;
+
+      if (Object.keys(patientUpdates).length > 0) {
+        await Patient.findOneAndUpdate({ user: userId }, patientUpdates);
+      }
     } else if (req.user.role === 'doctor') {
-      await Doctor.findOneAndUpdate({ user: userId }, {
-        qualifications, experience, hospital, location, consultation_fee, about, languages
-      });
+      const doctorUpdates = {};
+      if (qualifications !== undefined) doctorUpdates.qualifications = qualifications;
+      if (experience !== undefined) doctorUpdates.experience = Number(experience);
+      if (hospital !== undefined) doctorUpdates.hospital = hospital;
+      if (location !== undefined) doctorUpdates.location = location;
+      if (consultation_fee !== undefined) doctorUpdates.consultation_fee = Number(consultation_fee);
+      if (about !== undefined) doctorUpdates.about = about;
+      if (languages !== undefined) doctorUpdates.languages = languages;
+
+      if (Object.keys(doctorUpdates).length > 0) {
+        await Doctor.findOneAndUpdate({ user: userId }, doctorUpdates);
+      }
     }
 
     return res.json({ success: true, message: 'Profile updated successfully!' });

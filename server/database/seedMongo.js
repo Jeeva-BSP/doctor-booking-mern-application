@@ -76,6 +76,43 @@ export async function seedMongoDatabase(forceReSeed = false) {
       medical_information: 'No known allergies. Routine health checks.'
     });
 
+    // 4. Create Sample Demo Doctor User
+    const demoDocUser = await User.create({
+      name: 'Dr. Sarah Jenkins',
+      email: 'doctor@bookadoctor.com',
+      password: hashedPassword,
+      phone: '+91-9876543212',
+      role: 'doctor',
+      profile_image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400',
+      address: 'Apollo Hospitals, Greams Road, Chennai, Tamil Nadu'
+    });
+
+    const demoDoctor = await Doctor.create({
+      user: demoDocUser._id,
+      specialization: specDocs['Cardiology'] || Object.values(specDocs)[0],
+      qualifications: 'MBBS, MD, FACC',
+      experience: 12,
+      hospital: 'Apollo Hospitals, Greams Road, Chennai',
+      location: 'Chennai',
+      state: 'Tamil Nadu',
+      consultation_fee: 750,
+      about: 'Senior Cardiologist specializing in preventive cardiology, heart health diagnostics, and outpatient care.',
+      languages: 'Tamil, English, Hindi',
+      rating: 4.9,
+      verification_status: 'approved'
+    });
+
+    const demoDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    for (const day of demoDays) {
+      await DoctorAvailability.create({
+        doctor: demoDoctor._id,
+        day,
+        start_time: '09:00 AM',
+        end_time: '05:00 PM',
+        slot_duration_minutes: 30
+      });
+    }
+
     // Avatar list
     const maleImages = [
       'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400',

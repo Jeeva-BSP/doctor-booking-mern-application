@@ -66,7 +66,15 @@ export default function ManageUsers() {
                 {filteredUsers.map((u) => (
                   <tr key={u.user_id} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                     <td className="p-4 flex items-center space-x-3">
-                      <img src={u.profile_image} alt={u.name} className="w-9 h-9 rounded-xl object-cover" />
+                      <img
+                        src={u.profile_image || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=400'}
+                        alt={u.name}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=400';
+                        }}
+                        className="w-9 h-9 rounded-xl object-cover ring-1 ring-sky-500/20"
+                      />
                       <div>
                         <p className="font-bold text-slate-900 dark:text-white">{u.name}</p>
                         <p className="text-[11px] text-slate-400">{u.email}</p>

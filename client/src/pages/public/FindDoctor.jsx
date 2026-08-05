@@ -156,7 +156,7 @@ export default function FindDoctor() {
           </div>
 
           {loading ? (
-            <LoadingSpinner message="Searching SQL database for doctors..." />
+            <LoadingSpinner message="Searching database for doctors..." />
           ) : doctors.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {doctors.map((doc) => (

@@ -99,7 +99,7 @@ export default function DoctorDetails() {
     try {
       setBookingLoading(true);
       const res = await appointmentService.createAppointment({
-        doctor_id: parseInt(id),
+        doctor_id: id,
         appointment_date: selectedDate,
         appointment_time: selectedTime,
         reason: reason

@@ -4,6 +4,8 @@ import Patient from '../models/Patient.js';
 import Appointment from '../models/Appointment.js';
 import Specialization from '../models/Specialization.js';
 import Notification from '../models/Notification.js';
+import Review from '../models/Review.js';
+import Favorite from '../models/Favorite.js';
 
 export const getAdminStats = async (req, res) => {
   try {

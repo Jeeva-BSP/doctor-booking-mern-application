@@ -21,6 +21,20 @@ export default function ManageAvailability() {
     return initial;
   });
 
+  const formatTime24 = (timeStr) => {
+    if (!timeStr) return '09:00';
+    if (/^\d{2}:\d{2}$/.test(timeStr.trim())) return timeStr.trim();
+    const isPM = /pm/i.test(timeStr);
+    const isAM = /am/i.test(timeStr);
+    const cleanStr = timeStr.replace(/(am|pm)/i, '').trim();
+    const parts = cleanStr.split(':').map(Number);
+    let hours = parts[0] || 0;
+    const minutes = parts[1] || 0;
+    if (isPM && hours < 12) hours += 12;
+    if (isAM && hours === 12) hours = 0;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+  };
+
   useEffect(() => {
     if (!user?.doctor_id) {
       setLoading(false);
@@ -35,9 +49,9 @@ export default function ManageAvailability() {
           if (match) {
             newSched[day] = {
               enabled: true,
-              start_time: match.start_time,
-              end_time: match.end_time,
-              duration: match.appointment_duration || 30
+              start_time: formatTime24(match.start_time),
+              end_time: formatTime24(match.end_time),
+              duration: match.appointment_duration || match.slot_duration_minutes || 30
             };
           } else {
             newSched[day] = { ...newSched[day], enabled: false };
